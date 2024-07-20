@@ -26,3 +26,8 @@ The [Rush](./Rush) folder contains group projects which are done under 2 days an
 ### Shell 
 
 The [Shell](./Shell) folder contains the shell scripting projects.
+
+## Disclaimer
+
+This repository serves for educationnal purposes only. Do not copy paste it, it would tamper with your learning. Use this repository as a way to understand the concepts and write your own code as it would make you have a better learning experience.
+
