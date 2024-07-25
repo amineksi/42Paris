@@ -5,7 +5,7 @@ Welcome to the 42Piscine repository ! It contains each project I've completed du
 ## Structure
 
 1. **BSQ (Algorithm)**
-2. **C (11/14)**
+2. **C (13.5/14)**
 3. **Rush (66%)**
 4. **Shell (100%)**
 
@@ -17,17 +17,16 @@ The [BSQ](./BSQ) folder contains the implementation of the "Biggest Square" algo
 
 ### C
 
-The [C](./Days) folder includes the C programming projects done during the Piscine. (C00 to C09 + C11 100% completed)
+The [C](./Days) folder includes the C programming projects done during the Piscine. (100% completed except for C10 which's half-done)
 
 ### Rush
 
 The [Rush](./Rush) folder contains group projects which are done under 2 days and require quick thinking. (First two are fully completed)
 
-### Shell 
+### Shell
 
 The [Shell](./Shell) folder contains the shell scripting projects.
 
 ## Disclaimer
 
 This repository serves for educationnal purposes only. Do not copy paste it, it would tamper with your learning. Use this repository as a way to understand the concepts and write your own code as it would make you have a better learning experience.
-
