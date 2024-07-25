@@ -15,15 +15,15 @@ Here's an overview of each folder and it's contents.
 
 The [BSQ](./BSQ) folder contains the implementation of the "Biggest Square" algorithm, which in a map, creates the biggest square of empty spaces avoiding the obstacles.
 
-### C
+### C (95%)
 
-The [C](./Days) folder includes the C programming projects done during the Piscine. (100% completed except for C10 which's half-done)
+The [C](./Days) folder includes the C programming projects done during the Piscine. (100% apart from last two exercises of C10)
 
-### Rush
+### Rush (66%)
 
-The [Rush](./Rush) folder contains group projects which are done under 2 days and require quick thinking. (First two are fully completed)
+The [Rush](./Rush) folder contains group projects which are done under 2 days and require quick thinking. 
 
-### Shell
+### Shell (100%)
 
 The [Shell](./Shell) folder contains the shell scripting projects.
 
