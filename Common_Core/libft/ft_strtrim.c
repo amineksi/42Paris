@@ -1,34 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/01 23:30:34 by amine             #+#    #+#             */
-/*   Updated: 2024/08/01 23:49:52 by amine            ###   ########.fr       */
+/*   Created: 2024/08/02 22:21:29 by amine             #+#    #+#             */
+/*   Updated: 2024/08/02 22:32:19 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+int	is_in_set(char const c, char const *set)
 {
 	size_t	i;
-	size_t	j;
 
 	i = 0;
-	if (!little)
-		return ((char *)big);
-	while (big[i] && i < len)
+	while (i < ft_strlen(set))
 	{
-		j = 0;
-		while (i + j < len && little[j] && big[i + j]
-			&& big[i + j] == little[j])
-			j++;
-		if (!little[j])
-			return ((char *)&big[i]);
-		i++;
+		if (c == set[i++])
+			return (1);
 	}
 	return (0);
+}
+
+char	*ft_strtrim(char const *s1, char const *set)
+{
+	int		i;
+	int		j;
+	int		count;
+	char	*s2;
+
+	i = 0;
+	j = 0;
+	count = 0;
+	while (s1[i])
+	{
+		if (!is_in_set(s1[i++], set))
+			count++;
+	}
+	s2 = malloc (count + 1);
+	if (!s2)
+		return (0);
+	i = 0;
+	while (s1[i])
+	{
+		if (!is_in_set(s1[i++], set))
+			s2[j++] = s1[i - 1];
+	}
+	s2[count] = '\0';
+	return (s2);
 }

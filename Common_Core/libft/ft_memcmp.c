@@ -1,37 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/01 23:50:15 by amine             #+#    #+#             */
-/*   Updated: 2024/08/02 00:23:23 by amine            ###   ########.fr       */
+/*   Created: 2024/08/02 00:38:38 by amine             #+#    #+#             */
+/*   Updated: 2024/08/03 00:46:07 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	int	i;
-	int	min;
-	int	rslt;
+	size_t				i;
+	unsigned char		*str1;
+	const unsigned char	*str2;
 
 	i = 0;
-	min = 1;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
-		i++;
-	if (str[i] == '+' || str[i] == '-')
+	str1 = (unsigned char *)s1;
+	str2 = (unsigned char *)s2;
+	while (i < n)
 	{
-		if (str[i] == '-')
-			min = -1;
+		if (str1[i] != str2[i])
+			return (str1[i] - str2[i]);
 		i++;
 	}
-	while (ft_isdigit(str[i]))
-	{
-		rslt *= 10;
-		rslt += str[i++] - '0';
-	}
-	return (rslt * min);
+	return (0);
 }

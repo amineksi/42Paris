@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/01 23:22:43 by amine             #+#    #+#             */
-/*   Updated: 2024/08/02 00:01:35 by amine            ###   ########.fr       */
+/*   Created: 2024/08/01 23:27:14 by amine             #+#    #+#             */
+/*   Updated: 2024/08/02 19:47:17 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+int	ft_strncmp(const char *first, const char *second, size_t length)
 {
-	char	*last;
-	char	*str;
+	size_t	i;
 
-	str = (char *)s;
-	last = 0;
-	while (*str)
+	if (!length)
+		return (0);
+	i = 0;
+	while (i < length && first[i] && second[i])
 	{
-		if (*str == c)
-			last = str;
-		str++;
+		if (first[i] != second[i] || i == length - 1)
+			return (first[i] - second[i]);
+		i++;
 	}
-	return (last);
+	return (first[i] - second[i]);
 }
