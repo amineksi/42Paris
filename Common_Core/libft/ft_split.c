@@ -6,13 +6,13 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 22:43:48 by amine             #+#    #+#             */
-/*   Updated: 2024/08/03 00:58:29 by amine            ###   ########.fr       */
+/*   Updated: 2024/08/03 01:57:07 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strncpy(char *dest, char *src, int n)
+static char	*ft_strncpy(char *dest, char *src, int n)
 {
 	int	i;
 
@@ -30,7 +30,7 @@ char	*ft_strncpy(char *dest, char *src, int n)
 	return (dest);
 }
 
-void	free_all(char **rslt, int j)
+static void	free_all(char **rslt, int j)
 {
 	int	i;
 
@@ -40,7 +40,7 @@ void	free_all(char **rslt, int j)
 	free(rslt);
 }
 
-void	splitting(char const *s, char **rslt, char c)
+static void	splitting(char const *s, char **rslt, char c)
 {
 	int	i;
 	int	j;
@@ -61,7 +61,6 @@ void	splitting(char const *s, char **rslt, char c)
 			if (!rslt[j])
 			{
 				free_all(rslt, j);
-				rslt = NULL;
 				return ;
 			}
 			ft_strncpy(rslt[j++], (char *)&s[count], i - count);
@@ -76,7 +75,7 @@ char	**ft_split(char const *s, char c)
 	int		length;
 	int		count;
 	char	**rslt;
-	
+
 	i = 0;
 	length = 0;
 	while (s[i])

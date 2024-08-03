@@ -6,13 +6,13 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 22:21:29 by amine             #+#    #+#             */
-/*   Updated: 2024/08/02 22:32:19 by amine            ###   ########.fr       */
+/*   Updated: 2024/08/03 01:20:46 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	is_in_set(char const c, char const *set)
+static int	is_in_set(char const c, char const *set)
 {
 	size_t	i;
 

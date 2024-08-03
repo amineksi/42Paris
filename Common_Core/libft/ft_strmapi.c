@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 23:58:38 by amine             #+#    #+#             */
-/*   Updated: 2024/08/03 00:08:45 by amine            ###   ########.fr       */
+/*   Updated: 2024/08/03 01:56:33 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_strmapi(char const *s, char (*f) (unsigned int, char))
 {
-	unsigned int	i;
-	char	*cpy;
+	unsigned int		i;
+	char				*cpy;
 
 	cpy = ft_strdup(s);
 	if (!cpy)

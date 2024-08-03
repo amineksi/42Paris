@@ -6,13 +6,13 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 23:04:32 by amine             #+#    #+#             */
-/*   Updated: 2024/08/02 23:57:41 by amine            ###   ########.fr       */
+/*   Updated: 2024/08/03 01:59:01 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	get_length(unsigned int n, int sign)
+static int	get_length(unsigned int n, int sign)
 {
 	int	i;
 
@@ -24,11 +24,10 @@ int	get_length(unsigned int n, int sign)
 		n /= 10;
 		i++;
 	}
-
 	return (i);
 }
 
-char	*convert_str(unsigned int nbr, char *number, int sign, int length)
+static char	*convert_str(unsigned int nbr, char *number, int sign, int length)
 {
 	number[length--] = '\0';
 	while (nbr > 9)
@@ -44,11 +43,11 @@ char	*convert_str(unsigned int nbr, char *number, int sign, int length)
 
 char	*ft_itoa(int n)
 {
-	int		length;
-	int		sign;
+	int				length;
+	int				sign;
 	unsigned int	cpy;
 	unsigned int	nbr;
-	char	*number;
+	char			*number;
 
 	sign = 1;
 	if (n < 0)
