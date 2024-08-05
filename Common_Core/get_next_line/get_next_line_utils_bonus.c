@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/03 17:42:11 by amine             #+#    #+#             */
-/*   Updated: 2024/08/05 03:02:59 by amine            ###   ########.fr       */
+/*   Created: 2024/08/05 03:03:05 by amine             #+#    #+#             */
+/*   Updated: 2024/08/05 03:03:50 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 void	ft_strlcpy(char *dst, const char *src, size_t size)
 {

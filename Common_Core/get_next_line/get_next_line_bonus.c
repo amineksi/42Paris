@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/03 16:55:51 by amine             #+#    #+#             */
-/*   Updated: 2024/08/05 03:00:47 by amine            ###   ########.fr       */
+/*   Created: 2024/08/05 02:59:37 by amine             #+#    #+#             */
+/*   Updated: 2024/08/05 03:03:44 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 int	ft_strlen(const char *str)
 {
@@ -83,27 +83,27 @@ int	read_file_to_content(char **content, char *buffer, int fd)
 
 char	*get_next_line(int fd)
 {
-	static char		*content;
+	static char		*content[NB_FILES];
 	char			*buffer;
 	char			*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	if (!content)
-		content = ft_strdup("");
+	if (!content[fd])
+		content[fd] = ft_strdup("");
 	buffer = malloc(BUFFER_SIZE + 1);
 	if (!buffer)
 		return (NULL);
-	if (!read_file_to_content(&content, buffer, fd))
+	if (!read_file_to_content(&content[fd], buffer, fd))
 		return (0);
 	free(buffer);
-	if (*content == '\0')
+	if (*content[fd] == '\0')
 	{
-		free(content);
-		content = NULL;
+		free(content[fd]);
+		content[fd] = NULL;
 		return (NULL);
 	}
-	line = get_full_line(&content);
-	update_content(&content, ft_strlen(line));
+	line = get_full_line(&content[fd]);
+	update_content(&content[fd], ft_strlen(line));
 	return (line);
 }
