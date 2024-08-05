@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 00:04:45 by amine             #+#    #+#             */
-/*   Updated: 2024/08/02 22:34:26 by amine            ###   ########.fr       */
+/*   Updated: 2024/08/05 04:20:14 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,19 @@
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	void	*rslt;
+	void		*new;
+	size_t		i;
 
-	rslt = (void *)malloc(nmemb * size);
-	if (!rslt)
+	if (size != 0 && nmemb > ((size_t) -1 / size))
 		return (0);
-	ft_bzero(rslt, nmemb * size);
-	return (rslt);
+	new = (void *) malloc(size * nmemb);
+	if (!new)
+		return (NULL);
+	i = 0;
+	while (i < size * nmemb)
+	{
+		*(unsigned char *)(new + i) = 0;
+		i++;
+	}
+	return (new);
 }

@@ -6,91 +6,79 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 22:43:48 by amine             #+#    #+#             */
-/*   Updated: 2024/08/03 01:57:07 by amine            ###   ########.fr       */
+/*   Updated: 2024/08/05 04:20:03 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*ft_strncpy(char *dest, char *src, int n)
+static size_t	count_words(char const *s, char c)
 {
-	int	i;
+	size_t		count;
+	size_t		i;
 
+	count = 0;
 	i = 0;
-	while (i < n && src[i])
+	while (s[i])
 	{
-		dest[i] = src[i];
+		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
+			count++;
 		i++;
 	}
-	while (i < n)
-	{
-		dest[i] = 0;
-		i++;
-	}
-	return (dest);
+	return (count);
 }
 
-static void	free_all(char **rslt, int j)
+static	void	fill_tab(char *tab, char const *s, char c)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	while (i < j)
-		free(rslt[i++]);
-	free(rslt);
+	while (s[i] && s[i] != c)
+	{
+		tab[i] = s[i];
+		i++;
+	}
+	tab[i] = '\0';
 }
 
-static void	splitting(char const *s, char **rslt, char c)
+static void	fill_rslt(char **rslt, char const *s, char c)
 {
-	int	i;
-	int	j;
-	int	count;
+	size_t		i;
+	size_t		j;
+	size_t		count;
 
 	i = 0;
 	j = 0;
 	while (s[i])
 	{
-		while (s[i] && s[i] == c)
-			i++;
-		count = i;
-		while (s[i] && s[i] != c)
-			i++;
-		if (count < i)
+		count = 0;
+		while ((s[i + count]) && s[i + count] != c)
+			count++;
+		if (count > 0)
 		{
-			rslt[j] = malloc (sizeof(char) * (i - count + 1));
+			rslt[j] = malloc (sizeof(char) * (count + 1));
 			if (!rslt[j])
-			{
-				free_all(rslt, j);
 				return ;
-			}
-			ft_strncpy(rslt[j++], (char *)&s[count], i - count);
+			fill_tab(rslt[j], &s[i], c);
+			j++;
+			i += count;
 		}
+		else
+			i++;
 	}
 	rslt[j] = 0;
+	return ;
 }
 
 char	**ft_split(char const *s, char c)
 {
-	int		i;
-	int		length;
-	int		count;
-	char	**rslt;
+	size_t		words;
+	char		**rslt;
 
-	i = 0;
-	length = 0;
-	while (s[i])
-	{
-		while (s[i] && s[i] == c)
-			i++;
-		count = i;
-		while (s[i] && s[i] != c)
-			i++;
-		if (count < i)
-			length++;
-	}
-	rslt = malloc (sizeof(char *) * (length + 1));
+	words = count_words(s, c);
+	rslt = malloc(sizeof(char *) * (words + 1));
 	if (!rslt)
 		return (0);
-	splitting(s, rslt, c);
+	fill_rslt(rslt, s, c);
 	return (rslt);
 }
