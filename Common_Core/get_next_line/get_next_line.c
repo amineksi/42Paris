@@ -6,12 +6,11 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 16:55:51 by amine             #+#    #+#             */
-/*   Updated: 2024/08/04 22:00:35 by amine            ###   ########.fr       */
+/*   Updated: 2024/08/05 02:38:52 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
 #include <stdio.h>
 #include <fcntl.h>
 
@@ -23,12 +22,6 @@ int	ft_strlen(const char *str)
 	while (str[i])
 		i++;
 	return (i);
-}
-
-void	fill_buffer(char *content, char *buffer)
-{
-	ft_bzero(buffer, BUFFER_SIZE);
-	ft_strlcpy(buffer, content, BUFFER_SIZE);
 }
 
 char	*get_full_line(char **content)
@@ -45,8 +38,8 @@ char	*get_full_line(char **content)
 		i++;
 	line = malloc (i + 1);
 	if (!line)
-		return (0);
-	ft_strlcpy(line, cpy, i);
+		return (NULL);
+	ft_strlcpy(line, cpy, i + 1);
 	return (line);
 }
 
@@ -64,75 +57,55 @@ void	update_content(char **content, int line_length)
 	*content = new_content;
 }
 
+int	read_file_to_content(char **content, char *buffer, int fd)
+{
+	ssize_t	bytes_read;
+	char	*new_content;
+
+	while (!ft_strchr(*content, '\n'))
+	{
+		bytes_read = read(fd, buffer, BUFFER_SIZE);
+		if (bytes_read <= 0)
+		{
+			if (bytes_read == -1)
+			{
+				free(buffer);
+				return (0);
+			}
+			break ;
+		}
+		buffer[bytes_read] = '\0';
+		new_content = ft_strjoin(*content, buffer);
+		if (*content)
+			free(*content);
+		*content = new_content;
+	}
+	return (1);
+}
+
 char	*get_next_line(int fd)
 {
 	static char		*content;
 	char			*buffer;
 	char			*line;
-	int				bytes_read;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (0);
+		return (NULL);
 	if (!content)
 		content = ft_strdup("");
-	buffer = malloc (BUFFER_SIZE + 1);
+	buffer = malloc(BUFFER_SIZE + 1);
 	if (!buffer)
+		return (NULL);
+	if (!read_file_to_content(&content, buffer, fd))
 		return (0);
-	while (!ft_strchr(content, '\n'))
-	{
-		bytes_read = read(fd, buffer, BUFFER_SIZE);
-		if (bytes_read <= 0)
-			break ;
-		buffer[bytes_read] = '\0';
-		content = ft_strjoin(content, buffer);
-	}
 	free(buffer);
 	if (*content == '\0')
 	{
 		free(content);
-		return (0);
+		content = NULL;
+		return (NULL);
 	}
 	line = get_full_line(&content);
 	update_content(&content, ft_strlen(line));
 	return (line);
 }
-
-
-int main(int argc, char **argv) {
-    int fd;
-    char *line;
-
-    if (argc < 2) {
-        while ((line = get_next_line(STDIN_FILENO)) != NULL) {
-        printf("%s", line);
-        free(line);
-    }
-    return 0;
-	}
-
-    fd = open(argv[1], O_RDONLY);
-
-    if (fd < 0) {
-        perror("Error opening file");
-        return 1;
-    }
-
-    while ((line = get_next_line(fd)) != NULL) {
-        printf("%s\n", line);
-		free(line);
-    }
-	free(line);
-    close(fd);
-    return 0;
-}
-
-/*
-int main(int argc, char **argv)
-{
-	int fd;
-
-	fd = open(argv[1], O_RDONLY);
-	get_next_line(fd);
-	
-	return (argc);
-}*/

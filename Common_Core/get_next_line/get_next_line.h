@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 16:31:16 by amine             #+#    #+#             */
-/*   Updated: 2024/08/04 21:53:57 by amine            ###   ########.fr       */
+/*   Updated: 2024/08/05 02:31:28 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # endif
 
 char	*get_next_line(int fd);
-void	ft_strlcpy(char *dst, const char *src, int size);
+void	ft_strlcpy(char *dst, const char *src, size_t size);
 int		ft_strlen(const char *str);
 void	ft_bzero(void *s, size_t n);
 char	*ft_strchr(const char *s, int c);
