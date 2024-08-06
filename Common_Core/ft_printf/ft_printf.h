@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 20:40:39 by amine             #+#    #+#             */
-/*   Updated: 2024/08/06 01:18:04 by amine            ###   ########.fr       */
+/*   Updated: 2024/08/06 03:03:46 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 
 int	has_format_specifiers(const char *str);
 void	ft_putstr(const char *str);
-void    ft_prints(va_list args);
-void	ft_printc(va_list args);
+void    ft_prints(char	*str);
+void	ft_printc(int value);
 
 int	ft_printf(const char *str, ...);
 

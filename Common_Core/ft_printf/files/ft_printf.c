@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 22:22:04 by amine             #+#    #+#             */
-/*   Updated: 2024/08/06 01:22:56 by amine            ###   ########.fr       */
+/*   Updated: 2024/08/06 03:09:25 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,14 @@ void	ft_putstr(const char *str)
 		write(1, &str[i++], 1);
 }
 
-/*void	processing(const char *str, va_list args, int i)
+void	processing(const char *str, va_list args, int i)
 {
-	
-}*/
+	if (str[i] == 'c')
+		ft_printc(va_arg(args, int));
+	if (str[i] == 's')
+		ft_prints(va_arg(args, char *));
+
+}
 
 int	ft_printf(const char *str, ...)
 {
@@ -37,10 +41,13 @@ int	ft_printf(const char *str, ...)
 	va_start(args, str);
 	while (str[i])
 	{
-		while (str[i] && str[i] != '%')
-			write(1, &str[i++], 1);
 		if (str[i] == '%')
-			ft_printc(args);
+		{
+			processing(str, args, i + 1);
+			i++;
+		}
+		else
+			write(1, &str[i], 1);
 		i++;
 	}
 	va_end(args);
@@ -50,5 +57,5 @@ int	ft_printf(const char *str, ...)
 
 int main()
 {
-	ft_printf("xddd%s", 'c');
+	ft_printf("XD");
 }
