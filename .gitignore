@@ -4,3 +4,5 @@ gnlTester
 to_do_list.txt
 test.c
 printfTester
+*.o
+*.a

@@ -2,7 +2,7 @@ NAME		= libftprintf.a
 LIBFT		= ./libft/libft.a
 LIBFTDIR	= ./libft
 SRC			= ./files
-SRC_FILES	= ft_printf.c
+SRC_FILES	= ft_printf.c ft_print_char.c
 OBJS		= $(SRC_FILES:.c=.o)
 
 CC			= cc 

@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 22:22:04 by amine             #+#    #+#             */
-/*   Updated: 2024/08/06 03:09:25 by amine            ###   ########.fr       */
+/*   Updated: 2024/08/06 16:37:30 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,24 @@ void	ft_putstr(const char *str)
 		write(1, &str[i++], 1);
 }
 
-void	processing(const char *str, va_list args, int i)
+int	processing(const char *str, va_list args, int i)
 {
 	if (str[i] == 'c')
-		ft_printc(va_arg(args, int));
-	if (str[i] == 's')
-		ft_prints(va_arg(args, char *));
-
+		return (ft_printc(va_arg(args, int)));
+	else if (str[i] == 's')
+		return (ft_prints(va_arg(args, char *)));
+	else if (str[i] == 'd' || str[i] == 'i')
+		return (ft_printi(va_arg(args, int)));
+	return (0);
 }
 
 int	ft_printf(const char *str, ...)
 {
 	va_list args;
 	int		i;
-
+	int		length;
+	
+	length = 0;
 	if (!str)
 		return (-1);
 	i = 0;
@@ -43,19 +47,16 @@ int	ft_printf(const char *str, ...)
 	{
 		if (str[i] == '%')
 		{
-			processing(str, args, i + 1);
-			i++;
+			length += processing(str, args, i + 1);
+			i += 2;
 		}
 		else
-			write(1, &str[i], 1);
-		i++;
+		{
+			write(1, &str[i++], 1);
+			length++;
+		}
 	}
 	va_end(args);
-
-	return (0);
+	return (length);
 }
 
-int main()
-{
-	ft_printf("XD");
-}
