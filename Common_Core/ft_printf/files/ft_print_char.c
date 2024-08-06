@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 00:51:20 by amine             #+#    #+#             */
-/*   Updated: 2024/08/06 18:56:35 by amine            ###   ########.fr       */
+/*   Updated: 2024/08/06 20:38:29 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,17 @@ int    ft_prints(char	*str)
 	}
 	write(1, str, ft_strlen(str));
 	return (ft_strlen(str));
+}
+
+int    ft_printp(unsigned char	*str)
+{
+	if (!str)
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}
+	write(1, (char *)str, ft_strlen((char *)str));
+	return (ft_strlen((char *)str));
 }
 
 int		ft_printu(unsigned int value)
