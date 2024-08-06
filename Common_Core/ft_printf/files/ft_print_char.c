@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 00:51:20 by amine             #+#    #+#             */
-/*   Updated: 2024/08/06 16:40:28 by amine            ###   ########.fr       */
+/*   Updated: 2024/08/06 18:56:35 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	ft_printi(int value)
 {
 	char	*c;
 	int		length;
+	
 	c = ft_itoa(value);
 	ft_putstr(c);
 	length = (int)ft_strlen(c);
@@ -41,4 +42,16 @@ int    ft_prints(char	*str)
 	}
 	write(1, str, ft_strlen(str));
 	return (ft_strlen(str));
+}
+
+int		ft_printu(unsigned int value)
+{
+	char	*c;
+	int		length;
+	
+	c = ft_utoa(value);
+	ft_putstr(c);
+	length = (int)ft_strlen(c);
+	free(c);
+	return (length);
 }

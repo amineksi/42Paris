@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 22:22:04 by amine             #+#    #+#             */
-/*   Updated: 2024/08/06 16:37:30 by amine            ###   ########.fr       */
+/*   Updated: 2024/08/06 18:57:08 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int	processing(const char *str, va_list args, int i)
 		return (ft_prints(va_arg(args, char *)));
 	else if (str[i] == 'd' || str[i] == 'i')
 		return (ft_printi(va_arg(args, int)));
+	else if (str[i] == 'u')
+		return (ft_printu(va_arg(args, unsigned int)));
 	return (0);
 }
 
@@ -59,4 +61,3 @@ int	ft_printf(const char *str, ...)
 	va_end(args);
 	return (length);
 }
-
