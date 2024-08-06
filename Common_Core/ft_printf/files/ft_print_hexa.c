@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 20:38:44 by amine             #+#    #+#             */
-/*   Updated: 2024/08/06 21:14:25 by amine            ###   ########.fr       */
+/*   Updated: 2024/08/06 22:13:58 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	get_length_uint(unsigned int num)
 	return (length);
 }
 
-char	*int_to_hexMin(unsigned int num)
+char	*int_to_hex_min(unsigned int num)
 {
 	char	*hex_str;
 	char	hex_chars[17];
@@ -48,7 +48,7 @@ char	*int_to_hexMin(unsigned int num)
 	return (hex_str);
 }
 
-char	*int_to_hexMax(unsigned int num)
+char	*int_to_hex_max(unsigned int num)
 {
 	char	*hex_str;
 	char	hex_chars[17];
@@ -76,21 +76,21 @@ int	ft_printx(unsigned int value)
 	char	*c;
 	int		length;
 
-	c = int_to_hexMin(value);
+	c = int_to_hex_min(value);
 	ft_putstr(c);
 	length = (int) ft_strlen(c);
 	free(c);
 	return (length);
 }
 
-int	ft_printX(unsigned int value)
+int	ft_print_upperx(unsigned int value)
 {
 	char	*c;
 	int		length;
 
-	c = int_to_hexMax(value);
+	c = int_to_hex_max(value);
 	ft_putstr(c);
 	length = (int) ft_strlen(c);
 	free(c);
-	return (length);	
+	return (length);
 }

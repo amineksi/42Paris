@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 22:22:04 by amine             #+#    #+#             */
-/*   Updated: 2024/08/06 21:16:13 by amine            ###   ########.fr       */
+/*   Updated: 2024/08/06 22:14:18 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,20 @@ int	processing(const char *str, va_list args, int i)
 	else if (str[i] == '%')
 		return (ft_printc('%'));
 	else if (str[i] == 'x')
-		return(ft_printx(va_arg(args, unsigned int)));
+		return (ft_printx(va_arg(args, unsigned int)));
 	else if (str[i] == 'X')
-		return (ft_printX(va_arg(args, unsigned int)));
-	/*else if (str[i] == 'p')
-		return (ft_printp(va_arg(args, unsigned char *)));*/
+		return (ft_print_upperx(va_arg(args, unsigned int)));
+	else if (str[i] == 'p')
+		return (ft_printp(va_arg(args, void *)));
 	return (0);
 }
 
 int	ft_printf(const char *str, ...)
 {
-	va_list args;
+	va_list	args;
 	int		i;
 	int		length;
-	
+
 	length = 0;
 	if (!str)
 		return (-1);
