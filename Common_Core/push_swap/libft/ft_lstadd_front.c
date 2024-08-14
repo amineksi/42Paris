@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/02 00:07:32 by amine             #+#    #+#             */
-/*   Updated: 2024/08/02 21:26:41 by amine            ###   ########.fr       */
+/*   Created: 2024/08/03 01:42:56 by amine             #+#    #+#             */
+/*   Updated: 2024/08/14 17:34:30 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../push_swap.h"
 
-void	ft_bzero(void *s, size_t n)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	ft_memset(s, '\0', n);
+	new->next = *lst;
+	*lst = new;
 }

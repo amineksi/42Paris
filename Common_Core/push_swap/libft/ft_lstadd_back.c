@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/01 23:02:32 by amine             #+#    #+#             */
-/*   Updated: 2024/08/02 00:03:25 by amine            ###   ########.fr       */
+/*   Created: 2024/08/03 01:59:43 by amine             #+#    #+#             */
+/*   Updated: 2024/08/14 02:32:39 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../push_swap.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+t_list	*ft_lstlast(t_list *lst)
 {
-	size_t	i;
-	size_t	j;
-	size_t	dst_init_l;
+	if (!lst)
+		return (0);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
+}
 
-	dst_init_l = ft_strlen(dst);
-	i = 0;
-	j = dst_init_l;
-	if (size == 0 || size <= dst_init_l)
-		return (size + ft_strlen(src));
-	while (src[i] && i < size - dst_init_l - 1)
-		dst[j++] = src[i++];
-	dst[j] = '\0';
-	return (ft_strlen(src) + dst_init_l);
+void	ft_lstadd_back(t_list **lst, t_list *new)
+{
+	if (*lst)
+		ft_lstlast(*lst)->next = new;
+	else
+		*lst = new;
 }
