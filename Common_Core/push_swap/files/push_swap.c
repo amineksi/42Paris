@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 03:27:40 by amine             #+#    #+#             */
-/*   Updated: 2024/08/14 17:48:54 by amine            ###   ########.fr       */
+/*   Updated: 2024/08/15 03:55:18 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int main(int argc, char **argv)
 	print_list(*stack_a);
 	stack_b = malloc(sizeof(t_list));
 	*stack_b = NULL;
-	sa(stack_a);
+	rra(stack_a);
 	print_list(*stack_a);
 	return (0);
 }

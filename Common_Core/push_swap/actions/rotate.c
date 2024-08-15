@@ -1,53 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/14 15:54:15 by amine             #+#    #+#             */
-/*   Updated: 2024/08/15 04:16:55 by amine            ###   ########.fr       */
+/*   Created: 2024/08/14 20:37:51 by amine             #+#    #+#             */
+/*   Updated: 2024/08/15 04:17:18 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static int	swap_elements(t_list **stack)
+static int	rotate_elements(t_list **stack)
 {
-	t_list		*stack_next;
-	int			tmp;
+	t_list	*tmp;
+	t_list	*new;
 
 	if (ft_lstsize(*stack) < 2)
 		return (0);
-	stack_next = *stack;
-	tmp = stack_next->value;
-	stack_next->value = stack_next->next->value;
-	stack_next->next->value = tmp;
+	tmp = *stack;
+	new = ft_lstnew(tmp->value);
+	tmp = tmp->next;
+	*stack = tmp;
+	ft_lstadd_back(stack, new);
 	return (1);
 }
 
-int	sa(t_list **stack)
+int	ra(t_list **stack)
 {
-	if (!swap_elements(stack))
+	if (!rotate_elements(stack))
 		return (0);
-	write(1, "sa\n", 3);
+	write(1, "ra\n", 3);
 	return (1);
 }
 
-int	sb(t_list **stack)
+int	rb(t_list **stack)
 {
-	if (!swap_elements(stack))
+	if (!rotate_elements(stack))
 		return (0);
-	write(1, "sb\n", 3);
+	write(1, "ra\n", 3);
 	return (1);
 }
 
-int	ss(t_list **stack_a, t_list **stack_b)
+int	rr(t_list **stack_a, t_list **stack_b)
 {
 	if (ft_lstsize(*stack_a) < 2 || ft_lstsize(*stack_b) < 2)
 		return (0);
-	swap_elements(stack_a);
-	swap_elements(stack_b);
-	write(1, "ss\n", 3);
+	rotate_elements(stack_a);
+	rotate_elements(stack_b);
+	write(1, "rr\n", 3);
 	return (1);
 }
