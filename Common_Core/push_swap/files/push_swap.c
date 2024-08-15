@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 03:27:40 by amine             #+#    #+#             */
-/*   Updated: 2024/08/15 03:55:18 by amine            ###   ########.fr       */
+/*   Updated: 2024/08/15 15:59:27 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,7 @@ int main(int argc, char **argv)
 	*stack_b = NULL;
 	rra(stack_a);
 	print_list(*stack_a);
+	free_stack(stack_a);
+	free_stack(stack_b);
 	return (0);
 }

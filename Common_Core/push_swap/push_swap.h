@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 03:21:45 by amine             #+#    #+#             */
-/*   Updated: 2024/08/15 03:53:05 by amine            ###   ########.fr       */
+/*   Updated: 2024/08/15 15:43:24 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_list
 }			t_list;
 
 int		check_error(int argc, char **argv);
+void	free_stack(t_list **stack);
 
 long	ft_atoi(char *str);
 int		ft_isdigit(int c);
