@@ -6,3 +6,6 @@ test.c
 printfTester
 *.o
 *.a
+log_error
+checker*
+tester*

@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 03:27:40 by amine             #+#    #+#             */
-/*   Updated: 2024/08/15 15:59:27 by amine            ###   ########.fr       */
+/*   Updated: 2024/08/16 18:08:06 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,15 @@ int main(int argc, char **argv)
 	
 	if (argc < 2)
 		return (-1);
-	if (check_error(argc, argv))
+	if (check_error(argc, argv) || is_sorted(argv))
 		return (-1);
 	stack_a = malloc (sizeof(t_list));
 	if (!stack_a)
 		return (-1);
 	init_stack(stack_a, &argv[1]);
-	print_list(*stack_a);
 	stack_b = malloc(sizeof(t_list));
 	*stack_b = NULL;
-	rra(stack_a);
+	choose_algorithm(stack_a, stack_b);
 	print_list(*stack_a);
 	free_stack(stack_a);
 	free_stack(stack_b);

@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 03:21:45 by amine             #+#    #+#             */
-/*   Updated: 2024/08/15 15:43:24 by amine            ###   ########.fr       */
+/*   Updated: 2024/08/16 17:51:25 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,16 @@ typedef struct s_list
 }			t_list;
 
 int		check_error(int argc, char **argv);
+int		is_sorted(char **argv);
 void	free_stack(t_list **stack);
+
+void    choose_algorithm(t_list **stack_a, t_list **stack_b);
+void	simple_algorithm(t_list **stack_a, t_list **stack_b);
+
+int get_min_stack(t_list **stack);
 
 long	ft_atoi(char *str);
 int		ft_isdigit(int c);
-
 t_list	*ft_lstlast(t_list *lst);
 int		ft_lstsize(t_list *lst);
 void	ft_lstadd_front(t_list **lst, t_list *new);
