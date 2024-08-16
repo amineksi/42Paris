@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 03:21:45 by amine             #+#    #+#             */
-/*   Updated: 2024/08/16 17:51:25 by amine            ###   ########.fr       */
+/*   Updated: 2024/08/16 19:15:55 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,10 @@ void	free_stack(t_list **stack);
 
 void    choose_algorithm(t_list **stack_a, t_list **stack_b);
 void	simple_algorithm(t_list **stack_a, t_list **stack_b);
+void	algo_3(t_list **stack_a, t_list **stack_b);
+void	algo_4_5(t_list **stack_a, t_list **stack_b);
 
-int get_min_stack(t_list **stack);
+int		get_min_stack(t_list **stack);
 
 long	ft_atoi(char *str);
 int		ft_isdigit(int c);

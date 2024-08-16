@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 02:39:39 by amine             #+#    #+#             */
-/*   Updated: 2024/08/16 18:17:50 by amine            ###   ########.fr       */
+/*   Updated: 2024/08/16 19:26:34 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static	void	algo_32_min(t_list **stack_a)
 		rra(stack_a);
 }
 
-static	void	algo_3(t_list **stack_a, t_list **stack_b)
+void	algo_3(t_list **stack_a, t_list **stack_b)
 {
 	if (!get_min_stack(stack_a))
 	{
@@ -51,12 +51,26 @@ static	void	algo_3(t_list **stack_a, t_list **stack_b)
 		algo_32_min(stack_a);
 }
 
-void	simple_algorithm(t_list **stack_a, t_list **stack_b)
+void	algo_4_5(t_list **stack_a, t_list **stack_b)
 {
-	if (ft_lstsize(*stack_a) == 2)
-		sa(stack_a);
-	else if (ft_lstsize(*stack_a) == 3)
-		algo_3(stack_a, stack_b);
-	else if (ft_lstsize(*stack_b))
-		return ;
+	int	min;
+
+	while (ft_lstsize(*stack_b) != 2)
+	{
+		min = get_min_stack(stack_a);
+		if (min < ft_lstsize(*stack_a) / 2)
+		{
+			while (get_min_stack(stack_a))
+				ra(stack_a);
+		}
+		else
+		{
+			while (get_min_stack(stack_a))
+				rra(stack_a);
+		}
+		pb(stack_b, stack_a);
+	}
+	simple_algorithm(stack_a, stack_b);
+	pa(stack_a, stack_b);
+	pa(stack_a, stack_b);
 }

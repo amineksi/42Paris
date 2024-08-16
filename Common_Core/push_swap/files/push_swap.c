@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 03:27:40 by amine             #+#    #+#             */
-/*   Updated: 2024/08/16 18:08:06 by amine            ###   ########.fr       */
+/*   Updated: 2024/08/16 19:33:01 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ int main(int argc, char **argv)
 	stack_b = malloc(sizeof(t_list));
 	*stack_b = NULL;
 	choose_algorithm(stack_a, stack_b);
-	print_list(*stack_a);
 	free_stack(stack_a);
 	free_stack(stack_b);
 	return (0);
