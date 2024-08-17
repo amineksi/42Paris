@@ -6,12 +6,11 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 03:27:40 by amine             #+#    #+#             */
-/*   Updated: 2024/08/16 19:33:01 by amine            ###   ########.fr       */
+/*   Updated: 2024/08/17 21:49:45 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-#include <stdio.h>
 
 void	init_stack(t_list **stack, char **argv)
 {

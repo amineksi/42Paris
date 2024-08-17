@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 03:21:45 by amine             #+#    #+#             */
-/*   Updated: 2024/08/16 19:15:55 by amine            ###   ########.fr       */
+/*   Updated: 2024/08/17 21:48:23 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,12 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdio.h>
 
 typedef struct s_list
 {
 	int					value;
+	int					index;
 	struct s_list		*next;
 }			t_list;
 
@@ -30,6 +32,10 @@ void    choose_algorithm(t_list **stack_a, t_list **stack_b);
 void	simple_algorithm(t_list **stack_a, t_list **stack_b);
 void	algo_3(t_list **stack_a, t_list **stack_b);
 void	algo_4_5(t_list **stack_a, t_list **stack_b);
+
+void	quick_sort(int *tab, int low, int high);
+int		*copy_stack_values(t_list *stack);
+void	add_index_to_stack(t_list *stack, int *tab);
 
 int		get_min_stack(t_list **stack);
 

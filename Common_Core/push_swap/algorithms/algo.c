@@ -12,6 +12,23 @@
 
 #include "../push_swap.h"
 
+void	large_algorithm(t_list **stack_a, t_list **stack_b)
+{
+	int	*tab;
+	t_list *tmp;
+
+	tab = copy_stack_values(*stack_a);
+	quick_sort(tab, 0, ft_lstsize(*stack_a) - 1);
+	add_index_to_stack(*stack_a, tab);
+	tmp = *stack_a;
+	while (tmp)
+	{
+		printf("%d\n", tmp->index);
+		tmp = tmp->next;
+	}
+	if (ft_lstsize(*stack_b))
+		return ;
+}
 void	simple_algorithm(t_list **stack_a, t_list **stack_b)
 {
 	if (ft_lstsize(*stack_a) == 2)
@@ -26,5 +43,6 @@ void    choose_algorithm(t_list **stack_a, t_list **stack_b)
 {
     if (ft_lstsize(*stack_a) <= 5)
         simple_algorithm(stack_a, stack_b);
-    // else huge algorithm
+    else
+		large_algorithm(stack_a, stack_b);
 }
