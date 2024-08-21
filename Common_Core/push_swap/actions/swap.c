@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 15:54:15 by amine             #+#    #+#             */
-/*   Updated: 2024/08/15 04:16:55 by amine            ###   ########.fr       */
+/*   Updated: 2024/08/21 02:42:10 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,16 @@ static int	swap_elements(t_list **stack)
 {
 	t_list		*stack_next;
 	int			tmp;
+	int			tmp_idx;
 
 	if (ft_lstsize(*stack) < 2)
 		return (0);
 	stack_next = *stack;
 	tmp = stack_next->value;
+	tmp_idx = stack_next->index;
+	stack_next->index = stack_next->next->index;
 	stack_next->value = stack_next->next->value;
+	stack_next->next->index = tmp_idx;
 	stack_next->next->value = tmp;
 	return (1);
 }

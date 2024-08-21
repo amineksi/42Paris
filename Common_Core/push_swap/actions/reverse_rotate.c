@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 03:51:32 by amine             #+#    #+#             */
-/*   Updated: 2024/08/15 04:22:31 by amine            ###   ########.fr       */
+/*   Updated: 2024/08/21 02:40:16 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static int	rrotate_elements(t_list **stack)
 		return (0);
 	tmp = *stack;
 	new = ft_lstnew(ft_lstlast(tmp)->value);
+	new->index = ft_lstlast(tmp)->index;
 	ft_lstadd_front(stack, new);
 	delete_last_element(stack);
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 20:37:51 by amine             #+#    #+#             */
-/*   Updated: 2024/08/16 18:35:25 by amine            ###   ########.fr       */
+/*   Updated: 2024/08/21 02:40:52 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static int	rotate_elements(t_list **stack)
 		return (0);
 	tmp = *stack;
 	new = ft_lstnew(tmp->value);
+	new->index = tmp->index;
 	if (!new)
 		return (0);
 	*stack = tmp->next;
