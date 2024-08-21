@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 12:53:37 by amine             #+#    #+#             */
-/*   Updated: 2024/08/15 22:04:25 by amine            ###   ########.fr       */
+/*   Updated: 2024/08/21 03:41:25 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	is_sorted(char **argv)
 
 	i = 2;
 	while (argv[i])
-	{	
+	{
 		if (ft_atoi(argv[i]) <= ft_atoi(argv[i - 1]))
 			return (0);
 		i++;

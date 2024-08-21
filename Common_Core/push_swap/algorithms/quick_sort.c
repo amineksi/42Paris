@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 21:46:21 by amine             #+#    #+#             */
-/*   Updated: 2024/08/17 21:53:56 by amine            ###   ########.fr       */
+/*   Updated: 2024/08/21 03:40:50 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ static int	partition(int *tab, int low, int high)
 	swap(&tab[low], &tab[j]);
 	return (j);
 }
+
 void	quick_sort(int *tab, int low, int high)
 {
 	int	i;
@@ -56,15 +57,15 @@ void	quick_sort(int *tab, int low, int high)
 
 int	*copy_stack_values(t_list *stack)
 {
-	int		*tab;
-	int		i;
-	t_list *cpy;
+	int			*tab;
+	int			i;
+	t_list		*cpy;
 
 	cpy = stack;
 	i = 0;
 	tab = malloc (sizeof(int) * ft_lstsize(cpy));
 	if (!tab)
-		return (0); //add error
+		return (0);
 	while (cpy)
 	{
 		tab[i++] = cpy->value;

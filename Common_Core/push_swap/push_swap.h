@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 03:21:45 by amine             #+#    #+#             */
-/*   Updated: 2024/08/20 20:56:58 by amine            ###   ########.fr       */
+/*   Updated: 2024/08/21 03:42:25 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,12 @@ void	free_stack(t_list **stack);
 
 void	print_list(t_list *head);
 
-void    choose_algorithm(t_list **stack_a, t_list **stack_b);
+void	choose_algorithm(t_list **stack_a, t_list **stack_b);
 void	simple_algorithm(t_list **stack_a, t_list **stack_b);
 void	algo_3(t_list **stack_a, t_list **stack_b);
 void	algo_4_5(t_list **stack_a, t_list **stack_b);
+
+void	sort_stack(t_list **stack_a, t_list **stack_b);
 
 void	quick_sort(int *tab, int low, int high);
 int		*copy_stack_values(t_list *stack);
