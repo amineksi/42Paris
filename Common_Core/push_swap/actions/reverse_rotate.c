@@ -6,35 +6,31 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 03:51:32 by amine             #+#    #+#             */
-/*   Updated: 2024/08/21 02:40:16 by amine            ###   ########.fr       */
+/*   Updated: 2024/09/11 14:37:45 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static void	delete_last_element(t_list **head)
-{
-	t_list	*current;
 
-	current = *head;
-	while (current->next->next != NULL)
-		current = current->next;
-	free(current->next);
-	current->next = NULL;
-}
 
 static int	rrotate_elements(t_list **stack)
 {
-	t_list	*tmp;
-	t_list	*new;
+	t_list	*last_stack;
+	t_list	*prev_last_stack;
 
-	if (ft_lstsize(*stack) < 2)
+	if (!*stack || !(*stack)->next)
 		return (0);
-	tmp = *stack;
-	new = ft_lstnew(ft_lstlast(tmp)->value);
-	new->index = ft_lstlast(tmp)->index;
-	ft_lstadd_front(stack, new);
-	delete_last_element(stack);
+	prev_last_stack = *stack;
+	last_stack = prev_last_stack->next;
+	while (last_stack->next)
+	{
+		prev_last_stack = prev_last_stack->next;
+		last_stack = last_stack->next;
+	}
+	prev_last_stack->next = NULL;
+	last_stack->next = *stack;
+	*stack = last_stack;
 	return (1);
 }
 
@@ -50,7 +46,7 @@ int	rrb(t_list **stack)
 {
 	if (!rrotate_elements(stack))
 		return (0);
-	write(1, "rra\n", 4);
+	write(1, "rrb\n", 4);
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 20:37:51 by amine             #+#    #+#             */
-/*   Updated: 2024/08/21 02:40:52 by amine            ###   ########.fr       */
+/*   Updated: 2024/09/10 00:07:46 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,17 @@
 
 static int	rotate_elements(t_list **stack)
 {
-	t_list	*tmp;
-	t_list	*new;
+	t_list	*last_node;
 
-	if (ft_lstsize(*stack) < 2)
+	if (!stack)
 		return (0);
-	tmp = *stack;
-	new = ft_lstnew(tmp->value);
-	new->index = tmp->index;
-	if (!new)
-		return (0);
-	*stack = tmp->next;
-	ft_lstadd_back(stack, new);
-	free(tmp);
+	last_node = ft_lstlast(*stack);
+	last_node->next = *stack;
+	*stack = (*stack)->next;
+	last_node->next->next = NULL;	
 	return (1);
 }
+
 
 int	ra(t_list **stack)
 {
@@ -42,7 +38,7 @@ int	rb(t_list **stack)
 {
 	if (!rotate_elements(stack))
 		return (0);
-	write(1, "ra\n", 3);
+	write(1, "rb\n", 3);
 	return (1);
 }
 

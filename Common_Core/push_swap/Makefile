@@ -1,5 +1,5 @@
 NAME = push_swap
-FILES = files/push_swap.c algorithms/algo.c algorithms/big_algo.c algorithms/quick_sort.c utils/stack_functions.c algorithms/simple_alg.c libft/ft_atoi.c libft/ft_isdigit.c utils/check_functions.c actions/push.c libft/ft_lstnew.c libft/ft_lstadd_back.c libft/ft_lstadd_front.c libft/ft_lstsize.c actions/swap.c utils/free_functions.c actions/reverse_rotate.c actions/rotate.c
+FILES = actions/push.c actions/reverse_rotate.c actions/rotate.c actions/swap.c algorithms/algo.c files/push_swap.c utils/move_nodes_functions.c utils/init_nodes_functions.c utils/check_functions.c utils/free_functions.c utils/initialize_stack_a.c utils/stack_functions.c libft/ft_atoi.c libft/ft_isdigit.c libft/ft_lstadd_back.c libft/ft_lstadd_front.c libft/ft_lstlast.c libft/ft_lstnew.c libft/ft_lstsize.c
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
 OBJ_FILES = $(FILES:.c=.o)

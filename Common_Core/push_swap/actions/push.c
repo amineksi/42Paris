@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 14:31:53 by amine             #+#    #+#             */
-/*   Updated: 2024/08/14 02:31:37 by amine            ###   ########.fr       */
+/*   Updated: 2024/09/11 01:54:32 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static int	push_element(t_list **src, t_list **dst)
 
 	if (!ft_lstsize(*src))
 		return (0);
-	dst_head = *dst;
 	src_head = *src;
+	dst_head = *dst;
 	tmp = src_head;
 	src_head = src_head->next;
 	*src = src_head;

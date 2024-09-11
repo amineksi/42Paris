@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 03:27:40 by amine             #+#    #+#             */
-/*   Updated: 2024/08/21 03:41:39 by amine            ###   ########.fr       */
+/*   Updated: 2024/09/11 14:52:29 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,23 @@ void	init_stack(t_list **stack, char **argv)
 	}
 }
 
+void print_list(t_list *list)
+{
+    printf("List Values:\n");
+    while (list) {
+        printf("%d\n", list->value);
+        list = list->next;
+    }
+}
+
+void print_list_idx(t_list *list){
+    printf("List Values:\n");
+    while (list) {
+        printf("%d\n", list->index);
+        list = list->next;
+    }
+}
+
 int	main(int argc, char **argv)
 {
 	t_list	**stack_a;
@@ -37,7 +54,7 @@ int	main(int argc, char **argv)
 	stack_a = malloc (sizeof(t_list));
 	if (!stack_a)
 		return (-1);
-	init_stack(stack_a, &argv[1]);
+	init_stack_a(stack_a, &argv[1]);
 	stack_b = malloc(sizeof(t_list));
 	*stack_b = NULL;
 	choose_algorithm(stack_a, stack_b);
