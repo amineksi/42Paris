@@ -46,10 +46,6 @@ static void	push_to_b(t_list **stack_a, t_list **stack_b)
 
 static void	large_algorithm(t_list **stack_a, t_list **stack_b)
 {
-	if (ft_lstsize(*stack_a) > 3)
-		pb(stack_b, stack_a);
-	if (ft_lstsize(*stack_a) > 3)
-		pb(stack_b, stack_a);
 	push_to_b(stack_a, stack_b);
 	algo_3(stack_a);
 	while (ft_lstsize(*stack_b))

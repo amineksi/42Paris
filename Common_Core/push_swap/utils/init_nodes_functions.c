@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 12:56:55 by amine             #+#    #+#             */
-/*   Updated: 2024/09/11 14:47:12 by amine            ###   ########.fr       */
+/*   Updated: 2024/09/11 22:10:37 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void    current_index(t_list **stack)
     while (head)
 	{
 		head->index = i;
-		if (i <= len /2 )
+		if (i <= len / 2)
 			head->above_median = 1;
 		else
 			head->above_median = 0;

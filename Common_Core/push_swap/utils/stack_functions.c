@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 17:50:21 by amine             #+#    #+#             */
-/*   Updated: 2024/09/11 14:27:38 by amine            ###   ########.fr       */
+/*   Updated: 2024/09/11 18:08:14 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ t_list	*get_cheapest(t_list **stack)
 			rslt = head;
 		head = head->next;
 	}
-	return (rslt);	
+	return (rslt);
 }
 
 int	diff(int a, int b)
