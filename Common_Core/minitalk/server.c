@@ -6,12 +6,11 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 14:21:46 by amine             #+#    #+#             */
-/*   Updated: 2024/09/21 23:02:43 by amine            ###   ########.fr       */
+/*   Updated: 2024/09/22 00:24:32 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft/libft.h"
-#include <stdio.h>
 #include <stdlib.h>
 #include <signal.h>
 #include <unistd.h>

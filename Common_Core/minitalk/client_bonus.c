@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 23:14:37 by amine             #+#    #+#             */
-/*   Updated: 2024/09/21 23:14:46 by amine            ###   ########.fr       */
+/*   Updated: 2024/09/22 00:23:12 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,25 @@ void    send_signal(long int pid, unsigned char c)
 		else
 			kill(pid, SIGUSR2);
 		i--;
-		usleep(100);
+		usleep(500);
 	}
 }
 
+void	signalReceiver(int sig)
+{
+	if (sig == SIGUSR1)
+		ft_printf("Bit 0 received succesfully.\n");
+	else if (sig == SIGUSR2)
+		ft_printf("Bit 1 received successfully.\n");
+}
 int main(int argc, char *argv[])
 {
 	int			i;
 	pid_t		pid;
 	const char	*msg;
-	
+
+	signal(SIGUSR1, signalReceiver);
+    signal(SIGUSR2, signalReceiver);
 	if (argc != 3 || ft_atoi(argv[1]) <= 0)
 		write(2, "Error\n", 6);
 	else

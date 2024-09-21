@@ -28,6 +28,9 @@ LIBFT = ./libft/libft.a
 # Default target
 all: $(CLIENT) $(SERVER)
 
+# Bonus target
+bonus: $(BONUS_CLIENT) $(BONUS_SERVER)
+
 # Client executable
 $(CLIENT): $(CLIENT_OBJS) $(LIBFT)
 	$(CC) $(CFLAGS) -o $@ $^ $(LIBFT)
@@ -60,4 +63,4 @@ fclean: clean
 re: fclean all
 
 # Phony targets
-.PHONY: all clean fclean re
+.PHONY: all bonus clean fclean re
