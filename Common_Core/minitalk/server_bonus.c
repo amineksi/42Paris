@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/20 18:06:27 by amine             #+#    #+#             */
-/*   Updated: 2024/09/21 23:02:27 by amine            ###   ########.fr       */
+/*   Created: 2024/09/21 23:14:04 by amine             #+#    #+#             */
+/*   Updated: 2024/09/21 23:14:18 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,40 +17,32 @@
 #include <unistd.h>
 #include <string.h>
 
-void    send_signal(long int pid, unsigned char c)
+void	signalHandler(int sig)
 {
-    int				i;
-	unsigned char	tmp;
-
-	i = 7;
-	while (i != -1)
+	static	unsigned char	received_byte;
+	static	int				bit_position;
+	
+    received_byte |= (sig == SIGUSR2);
+    bit_position++;
+	if (bit_position == 8)
 	{
-		tmp = c >> i;
-		if (tmp % 2 == 0)
-			kill(pid, SIGUSR1);
+		if (received_byte == '\0')
+			ft_printf("\n");
 		else
-			kill(pid, SIGUSR2);
-		i--;
-		usleep(100);
+			ft_printf("%c", received_byte);
+		bit_position = 0;
+		received_byte = 0;
 	}
+	else
+		received_byte <<= 1; 
 }
 
-int main(int argc, char *argv[])
+int main(void)
 {
-	int			i;
-	pid_t		pid;
-	const char	*msg;
-	
-	if (argc != 3 || ft_atoi(argv[1]) <= 0)
-		write(2, "Error\n", 6);
-	else
-	{
-		i = 0;
-		pid = ft_atoi(argv[1]);
-		msg = argv[2];
-		while (msg[i])
-			send_signal(pid, msg[i++]);
-		send_signal(pid, '\0');
-	}
-	return (0);
+	ft_printf("The server's PID is : %d\n", getpid());
+    signal(SIGUSR1, signalHandler);
+	signal(SIGUSR2, signalHandler);
+	while (1)
+		pause();
+    return 0;
 }

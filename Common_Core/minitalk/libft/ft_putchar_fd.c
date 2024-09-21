@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/20 18:25:52 by amine             #+#    #+#             */
-/*   Updated: 2024/09/20 23:21:45 by amine            ###   ########.fr       */
+/*   Created: 2024/08/03 00:28:44 by amine             #+#    #+#             */
+/*   Updated: 2024/08/03 01:57:21 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <signal.h>
-#include <unistd.h>
-#include <string.h>
+#include "libft.h"
+
+void	ft_putchar_fd(char c, int fd)
+{
+	write(fd, &c, 1);
+}
