@@ -6,11 +6,21 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 17:42:11 by amine             #+#    #+#             */
-/*   Updated: 2024/08/05 03:02:59 by amine            ###   ########.fr       */
+/*   Updated: 2024/11/25 15:48:03 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+int	ft_strlen(const char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
 
 void	ft_strlcpy(char *dst, const char *src, size_t size)
 {
@@ -26,15 +36,6 @@ void	ft_strlcpy(char *dst, const char *src, size_t size)
 		}
 		dst[count] = '\0';
 	}
-}
-
-void	ft_bzero(void *s, size_t n)
-{
-	unsigned char	*p;
-
-	p = s;
-	while (n--)
-		*p++ = '\0';
 }
 
 char	*ft_strchr(const char *s, int c)

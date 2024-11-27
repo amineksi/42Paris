@@ -7,7 +7,7 @@ FILES = ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c ft_memchr.c ft_memcmp.c 
 
 BONUS_FILES = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c \
 	ft_lstclear.c ft_lstiter.c ft_lstmap.c
-CC = cc
+CC = gcc
 CFLAGS = -Wall -Werror -Wextra -c -I.
 TO_FILES = $(FILES:.c=.o)
 TO_BONUS_FILES = $(BONUS_FILES:.c=.o)

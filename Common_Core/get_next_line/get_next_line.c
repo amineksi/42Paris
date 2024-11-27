@@ -6,104 +6,98 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 16:55:51 by amine             #+#    #+#             */
-/*   Updated: 2024/08/05 03:00:47 by amine            ###   ########.fr       */
+/*   Updated: 2024/11/28 00:15:55 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	ft_strlen(const char *str)
+char	*free_all(char *tmp, char *buffer)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	free(tmp);
+	free(buffer);
+	return (NULL);
 }
 
-char	*get_full_line(char **content)
+char	*get_full_line(char *content)
 {
 	int		i;
-	char	*cpy;
 	char	*line;
 
 	i = 0;
-	cpy = *content;
-	while (cpy[i] && cpy[i] != '\n')
+	while (content[i] && content[i] != '\n')
 		i++;
-	if (cpy[i] == '\n')
+	if (content[i] == '\n')
 		i++;
-	line = malloc (i + 1);
+	line = malloc ((i + 1) * sizeof(char));
 	if (!line)
 		return (NULL);
-	ft_strlcpy(line, cpy, i + 1);
+	ft_strlcpy(line, content, i + 1);
 	return (line);
 }
 
-void	update_content(char **content, int line_length)
+char	*update_content(char *content, int line_length)
 {
 	char	*new_content;
 	int		old_length;
 
-	old_length = ft_strlen(*content);
+	old_length = ft_strlen(content);
 	if (line_length < old_length)
-		new_content = ft_strdup(*content + line_length);
+		new_content = ft_strdup(content + line_length);
 	else
 		new_content = ft_strdup("");
-	free(*content);
-	*content = new_content;
+	free(content);
+	content = new_content;
+	return (content);
 }
 
-int	read_file_to_content(char **content, char *buffer, int fd)
+char	*read_file_to_content(char *buffer, int fd)
 {
-	ssize_t	bytes_read;
 	char	*new_content;
+	char	*tmp;
+	int		bytes_read;
 
-	while (!ft_strchr(*content, '\n'))
+	tmp = malloc ((BUFFER_SIZE + 1) * sizeof(char));
+	if (!tmp)
+		return (NULL);
+	bytes_read = 1;
+	while (bytes_read > 0)
 	{
-		bytes_read = read(fd, buffer, BUFFER_SIZE);
-		if (bytes_read <= 0)
-		{
-			if (bytes_read == -1)
-			{
-				free(buffer);
-				return (0);
-			}
+		bytes_read = read(fd, tmp, BUFFER_SIZE);
+		if (bytes_read < 0 || (bytes_read <= 0 && !buffer[0]))
+			return (free_all(tmp, buffer));
+		tmp[bytes_read] = '\0';
+		new_content = ft_strjoin(buffer, tmp);
+		free(buffer);
+		buffer = new_content;
+		if (ft_strchr(buffer, '\n'))
 			break ;
-		}
-		buffer[bytes_read] = '\0';
-		new_content = ft_strjoin(*content, buffer);
-		if (*content)
-			free(*content);
-		*content = new_content;
 	}
-	return (1);
+	free(tmp);
+	return (buffer);
 }
 
 char	*get_next_line(int fd)
 {
-	static char		*content;
-	char			*buffer;
+	static char		*buffer;
 	char			*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	if (!content)
-		content = ft_strdup("");
-	buffer = malloc(BUFFER_SIZE + 1);
+	if (!buffer)
+		buffer = ft_strdup("");
 	if (!buffer)
 		return (NULL);
-	if (!read_file_to_content(&content, buffer, fd))
-		return (0);
-	free(buffer);
-	if (*content == '\0')
+	buffer = read_file_to_content(buffer, fd);
+	if (!buffer)
+		return (NULL);
+	line = get_full_line(buffer);
+	if (!line)
 	{
-		free(content);
-		content = NULL;
+		free(buffer);
+		buffer = NULL;
 		return (NULL);
 	}
-	line = get_full_line(&content);
-	update_content(&content, ft_strlen(line));
+	buffer = update_content(buffer, ft_strlen(line));
 	return (line);
 }
