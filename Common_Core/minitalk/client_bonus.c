@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 23:14:37 by amine             #+#    #+#             */
-/*   Updated: 2024/09/22 00:23:12 by amine            ###   ########.fr       */
+/*   Updated: 2024/12/06 16:22:27 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void    send_signal(long int pid, unsigned char c)
 		else
 			kill(pid, SIGUSR2);
 		i--;
-		usleep(500);
+		usleep(50);
 	}
 }
 

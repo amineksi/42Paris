@@ -26,26 +26,30 @@ BONUS_SERVER_OBJS = $(BONUS_SERVER_SRC:.c=.o)
 LIBFT = ./libft/libft.a
 
 # Default target
-all: $(CLIENT) $(SERVER)
+all: $(LIBFT) $(CLIENT) $(SERVER)
 
 # Bonus target
-bonus: $(BONUS_CLIENT) $(BONUS_SERVER)
+bonus: $(LIBFT) $(BONUS_CLIENT) $(BONUS_SERVER)
+
+# Build libft
+$(LIBFT):
+	$(MAKE) -C libft
 
 # Client executable
 $(CLIENT): $(CLIENT_OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) -o $@ $^ $(LIBFT)
+	$(CC) $(CFLAGS) -o $@ $(CLIENT_OBJS) $(LIBFT)
 
 # Server executable
 $(SERVER): $(SERVER_OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) -o $@ $^ $(LIBFT)
+	$(CC) $(CFLAGS) -o $@ $(SERVER_OBJS) $(LIBFT)
 
 # Bonus Client executable
 $(BONUS_CLIENT): $(BONUS_CLIENT_OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) -o $@ $^ $(LIBFT)
+	$(CC) $(CFLAGS) -o $@ $(BONUS_CLIENT_OBJS) $(LIBFT)
 
 # Bonus Server executable
 $(BONUS_SERVER): $(BONUS_SERVER_OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) -o $@ $^ $(LIBFT)
+	$(CC) $(CFLAGS) -o $@ $(BONUS_SERVER_OBJS) $(LIBFT)
 
 # Compile .c files to .o files
 %.o: %.c minitalk.h
@@ -53,10 +57,12 @@ $(BONUS_SERVER): $(BONUS_SERVER_OBJS) $(LIBFT)
 
 # Clean up object files and executables
 clean:
+	$(MAKE) -C libft clean
 	rm -f $(CLIENT_OBJS) $(SERVER_OBJS) $(BONUS_CLIENT_OBJS) $(BONUS_SERVER_OBJS)
 
 # Full clean: clean and remove executables
 fclean: clean
+	$(MAKE) -C libft fclean
 	rm -f $(CLIENT) $(SERVER) $(BONUS_CLIENT) $(BONUS_SERVER)
 
 # Rebuild everything
