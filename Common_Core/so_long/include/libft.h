@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 22:57:30 by amine             #+#    #+#             */
-/*   Updated: 2024/12/26 18:48:28 by amine            ###   ########.fr       */
+/*   Updated: 2024/12/26 18:50:52 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ int		ft_printp(void *addr);
 
 int		ft_printf(const char *str, ...);
 char	*get_next_line(int fd, int freeing);
-char	*free_buffer(char *buffer);
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
