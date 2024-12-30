@@ -6,113 +6,68 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 13:19:30 by akassous          #+#    #+#             */
-/*   Updated: 2024/12/26 19:07:37 by amine            ###   ########.fr       */
+/*   Updated: 2024/12/30 02:28:29 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	loop_gnl(int fd, int *cols, int *rows, char **line)
+int	ft_doublestrlen(char **map)
 {
-	int	line_length;
+	int	i;
 
-	*line = get_next_line(fd, 0);
-	if (!*line)
-		return (0);
-	line_length = ft_strlen(*line);
-	if ((*line)[ft_strlen(*line) - 1] == '\n')
-		line_length--;
-	if (*cols == -1)
-		*cols = line_length;
-	else if (line_length != *cols)
-	{
-		free(*line);
-		get_next_line(fd, 1);
-		return (-1);
-	}
-	(*rows)++;
-	free(*line);
-	return (1);
-}
-
-int	count_and_validate_map(const char *file_path, int *rows, int *cols)
-{
-	int		fd;
-	char	*line;
-	int		rslt;
-
-	*rows = 0;
-	*cols = -1;
-	fd = open(file_path, O_RDONLY);
-	if (fd < 0)
-		return (-1);
-	while (1)
-	{
-		rslt = loop_gnl(fd, cols, rows, &line);
-		if (rslt == -1)
-		{
-			close(fd);
-			return (-1);
-		}
-		if (rslt == 0)
-			break ;
-	}
-	close(fd);
-	return (0);
-}
-
-char	**allocate_map(int rows)
-{
-	char	**map;
-
-	map = (char **) malloc((rows + 1) * sizeof(char *));
 	if (!map)
-		return (NULL);
-	return (map);
+		return (0);
+	i = 0;
+	while (map[i])
+		i++;
+	return (i);
 }
 
-char	**fill_map(const char *file_path, char **map)
+static char	**join_d_dim(char **s1, char *s2)
 {
-	int		fd;
-	char	*line;
+	char	**rslt;
+	int		len;
 	int		i;
 
-	fd = open(file_path, O_RDONLY);
+	len = ft_doublestrlen(s1);
 	i = 0;
-	if (fd < 0)
+	rslt = malloc((len + 2) * sizeof(char *));
+	if (!rslt)
 		return (NULL);
-	line = get_next_line(fd, 0);
-	while (line != NULL)
+	while (i < len)
 	{
-		map[i] = ft_strdup(line);
-		if (!(map[i]))
-		{
-			free(line);
-			close(fd);
-			return (NULL);
-		}
-		free(line);
+		rslt[i] = ft_strdup(s1[i]);
+		free(s1[i]);
 		i++;
-		line = get_next_line(fd, 0);
 	}
-	map[i] = NULL;
-	close(fd);
-	return (map);
+	rslt[i++] = ft_strdup(s2);
+	rslt[i] = NULL;
+	free(s1);
+	return (rslt);
 }
 
-char	**read_map(const char *file_path)
+char	**read_map(char *file_path)
 {
-	int		rows;
-	int		cols;
-	char	**map;
+	int		fd;
+	char	**rslt;
+	char	*line;
 
-	if (count_and_validate_map(file_path, &rows, &cols) < 0)
+	fd = open(file_path, O_RDONLY);
+	if (fd == -1)
 		return (NULL);
-	map = allocate_map(rows);
-	if (!map)
+	rslt = malloc(sizeof(char *));
+	if (!rslt)
 		return (NULL);
-	map = fill_map(file_path, map);
-	if (!map)
-		return (NULL);
-	return (map);
+	rslt[0] = NULL;
+	line = get_next_line(fd);
+	while (line)
+	{
+		rslt = join_d_dim(rslt, line);
+		free(line);
+		line = get_next_line(fd);
+	}
+	close(fd);
+	free(line);
+	return (rslt);
 }

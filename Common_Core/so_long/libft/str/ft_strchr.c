@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/03 17:42:11 by amine             #+#    #+#             */
-/*   Updated: 2024/12/26 18:47:49 by amine            ###   ########.fr       */
+/*   Created: 2024/08/01 23:16:33 by amine             #+#    #+#             */
+/*   Updated: 2024/12/29 18:33:43 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,18 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	while (*s)
-	{
-		if (*s == (char)c)
-			return ((char *)s);
-		s++;
-	}
-	if (!c)
-		return ((char *)s);
-	return (NULL);
-}
+	int		i;
 
-char	*free_buffer(char *buffer)
-{
-	free(buffer);
-	return NULL;
+	i = 0;
+	if (!s)
+		return (NULL);
+	while (s[i])
+	{
+		if (s[i] == (char) c)
+			return ((char *)(s + i));
+		i++;
+	}
+	if (c == '\0')
+		return ((char *)(s + i));
+	return (NULL);
 }

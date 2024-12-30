@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 02:46:34 by amine             #+#    #+#             */
-/*   Updated: 2024/12/26 19:08:05 by amine            ###   ########.fr       */
+/*   Updated: 2024/12/29 20:13:48 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,20 +42,14 @@ int	surrounded_by_walls(int rows, int cols, char **map)
 	return (1);
 }
 
-int	ft_doublestrlen(char **map)
-{
-	int	i;
-
-	i = 0;
-	while (map[i])
-		i++;
-	return (i);
-}
-
 char	**check_map_content(char **map)
 {
-	if (!surrounded_by_walls(ft_doublestrlen(map),
-			ft_strlen(map[ft_doublestrlen(map) - 1]), map))
+	int	map_length;
+
+	if (!map || !map[0])
+		return (error_handling("Invalid map."));
+	map_length = ft_doublestrlen(map);
+	if (!surrounded_by_walls(map_length, ft_strlen(map[map_length - 1]), map))
 		return (error_handling("Not surrounded by walls."));
 	return (map);
 }
@@ -72,6 +66,9 @@ char	**checking_args(int argc, char *argv[])
 	if (!map)
 		return (error_handling("Invalid map size."));
 	if (!check_map_content(map))
+	{
+		free_map(map);
 		return (0);
+	}
 	return (map);
 }

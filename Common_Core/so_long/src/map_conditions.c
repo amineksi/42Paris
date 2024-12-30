@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 02:21:23 by amine             #+#    #+#             */
-/*   Updated: 2024/12/24 03:36:08 by amine            ###   ########.fr       */
+/*   Updated: 2024/12/30 01:43:06 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	valid_char(char c)
 {
-	return (c == '1' || c == '0' || c == 'P' || c == 'E' || c == 'C');
+	return (c == '1' || c == '0' || c == 'P' || c == 'E'
+		|| c == 'C' || c == 'A');
 }
 
 void	count_chars(char c, int *count_e, int *count_p, int *count_c)

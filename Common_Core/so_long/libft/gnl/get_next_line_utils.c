@@ -1,54 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/02 22:21:29 by amine             #+#    #+#             */
-/*   Updated: 2024/08/03 01:20:46 by amine            ###   ########.fr       */
+/*   Created: 2024/08/03 17:42:11 by amine             #+#    #+#             */
+/*   Updated: 2024/12/30 02:11:19 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	is_in_set(char const c, char const *set)
+char	*ft_strjoin_modified(char *s1, char *s2)
 {
-	size_t	i;
-
-	i = 0;
-	while (i < ft_strlen(set))
-	{
-		if (c == set[i++])
-			return (1);
-	}
-	return (0);
-}
-
-char	*ft_strtrim(char const *s1, char const *set)
-{
+	char	*result;
 	int		i;
 	int		j;
-	int		count;
-	char	*s2;
 
-	i = 0;
+	i = -1;
 	j = 0;
-	count = 0;
-	while (s1[i])
+	if (!s1)
 	{
-		if (!is_in_set(s1[i++], set))
-			count++;
+		s1 = malloc(sizeof(char));
+		if (!s1)
+			return (NULL);
+		s1[0] = '\0';
 	}
-	s2 = malloc (count + 1);
 	if (!s2)
-		return (0);
-	i = 0;
-	while (s1[i])
-	{
-		if (!is_in_set(s1[i++], set))
-			s2[j++] = s1[i - 1];
-	}
-	s2[count] = '\0';
-	return (s2);
+		return (NULL);
+	result = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	if (!result)
+		return (NULL);
+	while (s1[++i])
+		result[i] = s1[i];
+	while (s2[j])
+		result[i++] = s2[j++];
+	result[i] = '\0';
+	free(s1);
+	return (result);
 }

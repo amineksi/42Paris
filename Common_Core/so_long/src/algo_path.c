@@ -6,22 +6,11 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 20:06:54 by amine             #+#    #+#             */
-/*   Updated: 2024/12/23 23:33:14 by amine            ###   ########.fr       */
+/*   Updated: 2024/12/30 02:02:59 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-int	is_valid_cell(char **map, int x, int y, int **visited)
-{
-	return (x >= 0 && y >= 0 && map[x][y] != '1' && !visited[x][y]);
-}
-
-int	e_before_end(int x, int y, t_vars *vars)
-{
-	return ((x == vars->x_end_pos && y == vars->y_end_pos)
-		&& vars->count_c != 0);
-}
 
 int	dfs(t_vars *vars, int x, int y, int **visited)
 {
@@ -42,29 +31,55 @@ int	dfs(t_vars *vars, int x, int y, int **visited)
 	return (0);
 }
 
+int	**allocate_visited(char **map, int map_length)
+{
+	int	**visited;
+	int	i;
+	int	j;
+
+	visited = malloc(sizeof(int *) * map_length);
+	if (!visited)
+		return (NULL);
+	i = 0;
+	while (i < map_length)
+	{
+		visited[i] = malloc(sizeof(int) * ft_strlen(map[i]));
+		if (!visited[i])
+		{
+			while (--i >= 0)
+				free(visited[i]);
+			free(visited);
+			return (NULL);
+		}
+		j = 0;
+		while (map[i][j])
+			visited[i][j++] = 0;
+		i++;
+	}
+	return (visited);
+}
+
+void	free_visited(int **visited, int map_length)
+{
+	int	i;
+
+	i = 0;
+	while (i < map_length)
+		free(visited[i++]);
+	free(visited);
+}
+
 int	existing_path(t_vars *vars)
 {
 	int	**visited;
 	int	rslt;
-	int	i;
-	int	j;
+	int	map_length;
 
-	i = -1;
-	visited = malloc (sizeof(int *) * ft_doublestrlen(vars->map));
-	while (vars->map[++i])
-	{
-		j = 0;
-		visited[i] = malloc (sizeof(int) * ft_strlen(vars->map[i]));
-		while (vars->map[i][j])
-			visited[i][j++] = 0;
-	}
+	map_length = ft_doublestrlen(vars->map);
+	visited = allocate_visited(vars->map, map_length);
+	if (!visited)
+		return (0);
 	rslt = dfs(vars, vars->x_begin_pos, vars->y_begin_pos, visited);
-	i = 0;
-	while (i < ft_doublestrlen(vars->map))
-	{
-		free(visited[i]);
-		i++;
-	}
-	free(visited);
+	free_visited(visited, map_length);
 	return (rslt);
 }

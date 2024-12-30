@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 12:44:35 by akassous          #+#    #+#             */
-/*   Updated: 2024/12/27 00:08:02 by amine            ###   ########.fr       */
+/*   Updated: 2024/12/27 23:39:58 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,13 @@ int	get_map_height(char **map)
 	return (height);
 }
 
+int	mlx_err_handle(t_vars vars)
+{
+	free_map(vars.map);
+	ft_putstr_fd("Error\nmlx error\n", 2);
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_vars	vars;
@@ -44,13 +51,13 @@ int	main(int argc, char **argv)
 	vars.count_moves = 0;
 	vars.mlx = mlx_init();
 	if (!vars.mlx)
-		return (-1);
+		return (mlx_err_handle(vars));
 	vars.win = mlx_new_window(vars.mlx, 32 * get_map_width(vars.map),
 			32 * get_map_height(vars.map), "so_long");
 	if (!vars.win)
 	{
 		free(vars.mlx);
-		return (1);
+		return (mlx_err_handle(vars));
 	}
 	load_images(&vars);
 	draw_map(&vars);

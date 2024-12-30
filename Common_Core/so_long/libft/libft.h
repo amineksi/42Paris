@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 22:57:30 by amine             #+#    #+#             */
-/*   Updated: 2024/12/26 18:48:28 by amine            ###   ########.fr       */
+/*   Updated: 2024/12/30 02:16:15 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
-#include <stdarg.h>
+# include <stdarg.h>
 
 typedef struct s_list
 {
@@ -55,7 +55,7 @@ int		ft_isalnum(int c);
 int		ft_isascii(int c);
 int		ft_isdigit(int c);
 int		ft_isprint(int c);
-int		ft_tolower(char c);
+int		ft_tolower(int c);
 int		ft_toupper(int c);
 int		ft_strncmp(const char *first, const char *second, size_t length);
 
@@ -84,7 +84,8 @@ int		ft_print_upperx(unsigned int value);
 int		ft_printp(void *addr);
 
 int		ft_printf(const char *str, ...);
-char	*get_next_line(int fd, int freeing);
+char	*get_next_line(int fd);
+char	*ft_strjoin_modified(char *s1, char *s2);
 char	*free_buffer(char *buffer);
 
 # ifndef BUFFER_SIZE

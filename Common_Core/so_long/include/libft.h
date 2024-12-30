@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 22:57:30 by amine             #+#    #+#             */
-/*   Updated: 2024/12/26 18:50:52 by amine            ###   ########.fr       */
+/*   Updated: 2024/12/30 02:16:26 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
-#include <stdarg.h>
+# include <stdarg.h>
 
 typedef struct s_list
 {
@@ -84,7 +84,7 @@ int		ft_print_upperx(unsigned int value);
 int		ft_printp(void *addr);
 
 int		ft_printf(const char *str, ...);
-char	*get_next_line(int fd, int freeing);
+char	*get_next_line(int fd);
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42

@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   algo_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/01 23:16:33 by amine             #+#    #+#             */
-/*   Updated: 2024/08/02 22:34:12 by amine            ###   ########.fr       */
+/*   Created: 2024/12/29 19:08:40 by amine             #+#    #+#             */
+/*   Updated: 2024/12/29 22:38:56 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "so_long.h"
 
-char	*ft_strchr(const char *s, int c)
+int	is_valid_cell(char **map, int x, int y, int **visited)
 {
-	int		i;
+	return (x >= 0 && y >= 0 && map[x][y] != '1' && !visited[x][y]
+		&& map[x][y] != 'A');
+}
 
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] == (char) c)
-			return ((char *)(s + i));
-		i++;
-	}
-	if (!c)
-		return ((char *)(s + i));
-	return (NULL);
+int	e_before_end(int x, int y, t_vars *vars)
+{
+	return ((x == vars->x_end_pos && y == vars->y_end_pos)
+		&& vars->count_c != 0);
 }

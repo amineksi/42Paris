@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 02:45:18 by amine             #+#    #+#             */
-/*   Updated: 2024/12/27 00:07:34 by amine            ###   ########.fr       */
+/*   Updated: 2024/12/30 01:49:08 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@ int	is_valid_move(t_vars *vars, int new_x, int new_y)
 	if (vars->map[new_x][new_y] == '1' || (vars->map[new_x][new_y] == 'E'
 		&& vars->initial_count_c != 0))
 		return (0);
+	if (vars->map[new_x][new_y] == 'A')
+	{
+		ft_printf("%i\n", ++vars->count_moves);
+		end_screen(vars, 0);
+		cleanup_and_exit(vars);
+	}
 	return (1);
 }
 
@@ -37,8 +43,7 @@ void	move_player(t_vars *vars, int new_x, int new_y)
 			&& vars->count_c == 0)
 		{
 			ft_printf("%i\n", ++vars->count_moves);
-			ft_printf("You win!\n");
-			cleanup_and_exit(vars);
+			end_screen(vars, 1);
 		}
 		vars->map[vars->x_begin_pos][vars->y_begin_pos] = 'P';
 		ft_printf("%i\n", ++vars->count_moves);

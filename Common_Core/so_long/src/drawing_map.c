@@ -6,7 +6,7 @@
 /*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 16:43:06 by amine             #+#    #+#             */
-/*   Updated: 2024/12/27 00:08:28 by amine            ###   ########.fr       */
+/*   Updated: 2024/12/29 22:41:59 by amine            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,21 @@ void	load_images(t_vars *vars)
 	int	height;
 
 	vars->img_wall = mlx_xpm_file_to_image(vars->mlx,
-			"assets/wall_resized.xpm", &width, &height);
+			"assets/wall.xpm", &width, &height);
 	vars->img_floor = mlx_xpm_file_to_image(vars->mlx,
-			"assets/floor_resized.xpm", &width, &height);
+			"assets/grass.xpm", &width, &height);
 	vars->img_p = mlx_xpm_file_to_image(vars->mlx,
 			"assets/player_resized.xpm", &width, &height);
 	vars->img_e = mlx_xpm_file_to_image(vars->mlx,
 			"assets/exit_resized.xpm", &width, &height);
 	vars->img_c = mlx_xpm_file_to_image(vars->mlx,
 			"assets/c_resized.xpm", &width, &height);
+	vars->winning_screen = mlx_xpm_file_to_image(vars->mlx,
+			"assets/winning.xpm", &width, &height);
+	vars->losing_screen = mlx_xpm_file_to_image(vars->mlx,
+			"assets/losing.xpm", &width, &height);
+	vars->alien = mlx_xpm_file_to_image(vars->mlx,
+			"assets/alien.xpm", &width, &height);
 }
 
 void	*select_image(t_vars *vars, int i, int j)
@@ -43,6 +49,8 @@ void	*select_image(t_vars *vars, int i, int j)
 		img = vars->img_e;
 	else if (vars->map[i][j] == 'C')
 		img = vars->img_c;
+	else if (vars->map[i][j] == 'A')
+		img = vars->alien;
 	return (img);
 }
 
