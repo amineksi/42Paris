@@ -39,6 +39,7 @@ void	*select_image(t_vars *vars, int i, int j)
 {
 	void	*img;
 
+	img = NULL;
 	if (vars->map[i][j] == '1')
 		img = vars->img_wall;
 	else if (vars->map[i][j] == '0')
