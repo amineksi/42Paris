@@ -35,14 +35,15 @@ int	init_philo(t_data *data)
 	data->philos = malloc(sizeof(t_philo) * data->nb_philo);
 	if (!data->philos)
 		return (0);
-	i = -1;
-	while (++i < data->nb_philo)
+	i = 0;
+	while (i < data->nb_philo)
 	{
 		data->philos[i] = new_philo(data);
 		pthread_mutex_init(&data->philos[i].dead, NULL);
 		pthread_mutex_init(&data->philos[i].meals, NULL);
 		pthread_mutex_init(&data->philos[i].check_fork, NULL);
 		data->philos[i].idx = i;
+		i++;
 	}
 	return (1);
 }

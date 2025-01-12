@@ -12,7 +12,23 @@
 
 #include "so_long.h"
 
-int	dfs(t_vars *vars, int x, int y, int **visited)
+int	check_e_route(t_vars *vars, int x, int y, int **visited)
+{
+	if (!is_valid_cell(vars->map, x, y, visited))
+		return (0);
+	visited[x][y] = 1;
+	if (x == vars->x_end_pos && y == vars->y_end_pos)
+		return (1);
+	if (check_e_route(vars, x + 1, y, visited)
+		|| check_e_route(vars, x - 1, y, visited)
+		|| check_e_route(vars, x, y + 1, visited)
+		|| check_e_route(vars, x, y - 1, visited))
+		return (1);
+	visited[x][y] = 0;
+	return (0);
+}
+
+int	check_c_route(t_vars *vars, int x, int y, int **visited)
 {
 	if (!is_valid_cell(vars->map, x, y, visited)
 		|| e_before_end(x, y, vars))
@@ -20,10 +36,12 @@ int	dfs(t_vars *vars, int x, int y, int **visited)
 	visited[x][y] = 1;
 	if (vars->map[x][y] == 'C')
 		vars->count_c--;
-	if (vars->count_c == 0 && x == vars->x_end_pos && y == vars->y_end_pos)
+	if (vars->count_c == 0)
 		return (1);
-	if (dfs(vars, x + 1, y, visited) || dfs(vars, x - 1, y, visited)
-		|| dfs(vars, x, y + 1, visited) || dfs(vars, x, y - 1, visited))
+	if (check_c_route(vars, x + 1, y, visited)
+		|| check_c_route(vars, x - 1, y, visited)
+		|| check_c_route(vars, x, y + 1, visited)
+		|| check_c_route(vars, x, y - 1, visited))
 		return (1);
 	visited[x][y] = 0;
 	if (vars->map[x][y] == 'C')
@@ -79,7 +97,12 @@ int	existing_path(t_vars *vars)
 	visited = allocate_visited(vars->map, map_length);
 	if (!visited)
 		return (0);
-	rslt = dfs(vars, vars->x_begin_pos, vars->y_begin_pos, visited);
+	rslt = check_c_route(vars, vars->x_begin_pos, vars->y_begin_pos, visited);
+	free_visited(visited, map_length);
+	visited = allocate_visited(vars->map, map_length);
+	if (!visited)
+		return (0);
+	rslt = check_e_route(vars, vars->x_begin_pos, vars->y_begin_pos, visited);
 	free_visited(visited, map_length);
 	return (rslt);
 }

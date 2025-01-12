@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   drawing_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
+/*   By: akassous <akassous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 16:43:06 by amine             #+#    #+#             */
-/*   Updated: 2024/12/29 22:41:59 by amine            ###   ########.fr       */
+/*   Updated: 2025/01/12 13:22:38 by akassous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	check_error(t_vars *vars)
+{
+	if (!vars->img_wall || !vars->img_floor || !vars->img_p
+		|| !vars->img_e || !vars->img_c || !vars->winning_screen
+		|| !vars->losing_screen || !vars->alien)
+		cleanup_and_exit(vars, 0);
+}
 
 void	load_images(t_vars *vars)
 {
@@ -22,17 +30,18 @@ void	load_images(t_vars *vars)
 	vars->img_floor = mlx_xpm_file_to_image(vars->mlx,
 			"assets/grass.xpm", &width, &height);
 	vars->img_p = mlx_xpm_file_to_image(vars->mlx,
-			"assets/player_resized.xpm", &width, &height);
+			"assets/player_new.xpm", &width, &height);
 	vars->img_e = mlx_xpm_file_to_image(vars->mlx,
-			"assets/exit_resized.xpm", &width, &height);
+			"assets/exit_new.xpm", &width, &height);
 	vars->img_c = mlx_xpm_file_to_image(vars->mlx,
-			"assets/c_resized.xpm", &width, &height);
+			"assets/c_new.xpm", &width, &height);
 	vars->winning_screen = mlx_xpm_file_to_image(vars->mlx,
 			"assets/winning.xpm", &width, &height);
 	vars->losing_screen = mlx_xpm_file_to_image(vars->mlx,
 			"assets/losing.xpm", &width, &height);
 	vars->alien = mlx_xpm_file_to_image(vars->mlx,
-			"assets/alien.xpm", &width, &height);
+			"assets/alien_new.xpm", &width, &height);
+	check_error(vars);
 }
 
 void	*select_image(t_vars *vars, int i, int j)
@@ -75,4 +84,5 @@ void	draw_map(t_vars *vars)
 		}
 		i++;
 	}
+	mlx_string_put(vars->mlx, vars->win, 20, 20, 0xFFFFFF, "0");
 }

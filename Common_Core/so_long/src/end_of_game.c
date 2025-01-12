@@ -15,27 +15,25 @@
 int	end_key_press(int keycode, t_vars *vars)
 {
 	if (keycode == 65307 || keycode == 65293)
-	{
-		mlx_destroy_window(vars->mlx, vars->end_win);
-		cleanup_and_exit(vars);
-	}
+		cleanup_and_exit(vars, 1);
 	return (0);
 }
 
 int	end_close(t_vars *vars)
 {
-	mlx_destroy_window(vars->mlx, vars->end_win);
-	cleanup_and_exit(vars);
+	cleanup_and_exit(vars, 1);
 	return (0);
 }
 
 void	end_screen(t_vars *vars, int won)
 {
+	mlx_destroy_window(vars->mlx, vars->win);
+	vars->win = NULL;
 	vars->end_win = mlx_new_window(vars->mlx, 600, 400, "End Screen");
 	if (!vars->end_win)
 	{
 		ft_putstr_fd("Error\nFailed to create end screen window\n", 2);
-		cleanup_and_exit(vars);
+		cleanup_and_exit(vars, 0);
 	}
 	if (won)
 	{
@@ -45,7 +43,7 @@ void	end_screen(t_vars *vars, int won)
 	}
 	else
 	{
-		ft_printf(":)");
+		ft_printf(":(");
 		mlx_put_image_to_window(vars->mlx,
 			vars->end_win, vars->losing_screen, 0, 0);
 	}

@@ -32,17 +32,25 @@ void	free_images(t_vars *vars)
 		mlx_destroy_image(vars->mlx, vars->alien);
 }
 
-void	cleanup_and_exit(t_vars *vars)
+void	cleanup_and_exit(t_vars *vars, int end)
 {
-	if (vars->win)
+	if (vars && vars->mlx)
 	{
-		mlx_destroy_window(vars->mlx, vars->win);
-		vars->win = NULL;
+		if (vars->win)
+		{
+			mlx_destroy_window(vars->mlx, vars->win);
+			vars->win = NULL;
+		}
+		if (end && vars->end_win)
+		{
+			mlx_destroy_window(vars->mlx, vars->end_win);
+			vars->end_win = NULL;
+		}
+		free_map(vars->map);
+		free_images(vars);
+		mlx_destroy_display(vars->mlx);
+		free(vars->mlx);
 	}
-	free_map(vars->map);
-	free_images(vars);
-	mlx_destroy_display(vars->mlx);
-	free(vars->mlx);
 	exit(0);
 }
 

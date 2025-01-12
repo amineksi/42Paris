@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_conditions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
+/*   By: akassous <akassous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 02:21:23 by amine             #+#    #+#             */
-/*   Updated: 2024/12/30 01:43:06 by amine            ###   ########.fr       */
+/*   Updated: 2025/01/12 12:58:25 by akassous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,12 @@ int	correct_caracters(t_vars *vars)
 
 int	map_conditions(t_vars *vars)
 {
+	if (!matching_size(vars->map))
+	{
+		free_map(vars->map);
+		error_handling("Incorrect map size");
+		return (0);
+	}
 	if (!correct_caracters(vars))
 	{
 		free_map(vars->map);

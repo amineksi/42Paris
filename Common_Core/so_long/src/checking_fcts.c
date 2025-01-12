@@ -19,6 +19,8 @@ int	has_ber_extension(const char *filename)
 	ext = ft_strrchr(filename, '.');
 	if (!ext)
 		return (0);
+	if (ft_strlen(ext) != 4)
+		return (0);
 	return (ft_strncmp(ext, ".ber", 4) == 0);
 }
 

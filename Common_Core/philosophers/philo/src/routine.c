@@ -14,17 +14,12 @@
 
 int	is_alive(t_philo *philo)
 {
-	int	time;
+	int	rslt;
 
-	time = get_time();
-	if (time - philo->last_meal > philo->env->time_to_die)
-	{
-		pthread_mutex_lock(&philo->dead);
-		philo->alive = 0;
-		pthread_mutex_unlock(&philo->dead);
-		return (0);
-	}
-	return (1);
+	pthread_mutex_lock(&philo->dead);
+	rslt = philo->alive;
+	pthread_mutex_unlock(&philo->dead);
+	return (rslt);
 }
 
 int	all_alive(t_data *data)
@@ -61,14 +56,14 @@ void	take_forks(t_philo *philo)
 		&& !get_left_fork(philo))
 	{
 		if (everyone_alive(philo->env) && !check_meals(philo->env))
-			print_msg("has taken a fork left", philo);
+			print_msg("has taken a fork", philo);
 		set_left_fork(philo, 1);
 	}
 	if (!get_left_fork(get_next_philo(philo->env, philo->idx))
 		&& !get_right_fork(philo))
 	{
 		if (everyone_alive(philo->env) && !check_meals(philo->env))
-			print_msg("has taken a fork right", philo);
+			print_msg("has taken a fork", philo);
 		set_right_fork(philo, 1);
 	}
 }

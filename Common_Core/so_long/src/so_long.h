@@ -3,16 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
+/*   By: akassous <akassous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 12:42:18 by akassous          #+#    #+#             */
-/*   Updated: 2024/12/30 02:14:51 by amine            ###   ########.fr       */
+/*   Updated: 2025/01/12 12:13:08 by akassous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/mlx.h"
-#include "../include/libft.h"
-#include <fcntl.h>
+#ifndef SO_LONG_H
+# define SO_LONG_H
+
+# include "../include/mlx.h"
+# include "../include/libft.h"
+# include <fcntl.h>
 
 typedef struct s_vars
 {
@@ -39,7 +42,7 @@ typedef struct s_vars
 	void	*alien;
 }				t_vars;
 
-void	cleanup_and_exit(t_vars *vars);
+void	cleanup_and_exit(t_vars *vars, int end);
 char	**read_map(char *file_path);
 int		map_conditions(t_vars *vars);
 char	**error_handling(char *msg);
@@ -54,3 +57,8 @@ void	draw_map(t_vars *vars);
 int		is_valid_cell(char **map, int x, int y, int **visited);
 int		e_before_end(int x, int y, t_vars *vars);
 void	end_screen(t_vars *vars, int won);
+int		**fill_with_zeros(int **visited);
+int		check_c_route(t_vars *vars, int x, int y, int **visited);
+int		check_e_route(t_vars *vars, int x, int y, int **visited);
+int		matching_size(char **map);
+#endif

@@ -14,6 +14,8 @@
 
 void	killing_philo(t_philo *philo)
 {
+	if (!everyone_alive(philo->env))
+		return ;
 	pthread_mutex_lock(&philo->dead);
 	philo->alive = 0;
 	pthread_mutex_unlock(&philo->dead);
@@ -35,8 +37,9 @@ int	check_meals(t_data *data)
 		return (0);
 	while (i < data->nb_philo)
 	{
-		if (data->philos[i++].nb_meals < data->nb_meals)
+		if (data->philos[i].nb_meals < data->nb_meals)
 			return (0);
+		i++;
 	}
 	return (1);
 }

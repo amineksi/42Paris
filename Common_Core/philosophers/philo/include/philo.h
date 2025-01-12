@@ -26,8 +26,8 @@ typedef struct s_philo
 {
 	int				nb_meals;
 	int				alive;
-	int				last_meal;
-	int				last_sleep;
+	long			last_meal;
+	long			last_sleep;
 	int				eating;
 	int				sleeping;
 	int				thinking;
@@ -44,14 +44,14 @@ typedef struct s_philo
 typedef struct s_data
 {
 	int				nb_philo;
-	int				time_to_die;
-	int				time_to_eat;
-	int				time_to_sleep;
+	long long				time_to_die;
+	long long			time_to_eat;
+	long long			time_to_sleep;
 	int				nb_meals_defined;
 	int				nb_meals;
 	t_philo			*philos;
 	pthread_mutex_t	print;
-	int				start_time;
+	long long			start_time;
 }				t_data;
 
 int		ft_atoi(const char *str);

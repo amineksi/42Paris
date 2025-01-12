@@ -14,7 +14,7 @@ LFLAGS = -L$(LIBFT_DIR) -lft -L$(MINILIBX_DIR) -lmlx_linux -lXext -lX11 -lm
 
 SRC_DIR = src
 OBJ_DIR = obj
-FILES = end_of_game algo_utils creating_map freeing map_conditions algo_path checking_fcts drawing_map handle_keys main
+FILES = end_of_game algo_utils creating_map freeing map_conditions algo_path checking_fcts drawing_map handle_keys main check_utils
 SRCS = $(addprefix $(SRC_DIR)/, $(addsuffix .c, $(FILES)))
 OBJS = $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(FILES)))
 
