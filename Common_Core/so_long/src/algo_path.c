@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algo_path.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amine <amine@student.42.fr>                +#+  +:+       +#+        */
+/*   By: akassous <akassous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 20:06:54 by amine             #+#    #+#             */
-/*   Updated: 2024/12/30 02:02:59 by amine            ###   ########.fr       */
+/*   Updated: 2025/01/14 17:08:02 by akassous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int	check_e_route(t_vars *vars, int x, int y, int **visited)
 		|| check_e_route(vars, x, y + 1, visited)
 		|| check_e_route(vars, x, y - 1, visited))
 		return (1);
-	visited[x][y] = 0;
 	return (0);
 }
 
@@ -43,7 +42,6 @@ int	check_c_route(t_vars *vars, int x, int y, int **visited)
 		|| check_c_route(vars, x, y + 1, visited)
 		|| check_c_route(vars, x, y - 1, visited))
 		return (1);
-	visited[x][y] = 0;
 	if (vars->map[x][y] == 'C')
 		vars->count_c++;
 	return (0);
@@ -99,6 +97,8 @@ int	existing_path(t_vars *vars)
 		return (0);
 	rslt = check_c_route(vars, vars->x_begin_pos, vars->y_begin_pos, visited);
 	free_visited(visited, map_length);
+	if (!rslt)
+		return (rslt);
 	visited = allocate_visited(vars->map, map_length);
 	if (!visited)
 		return (0);
