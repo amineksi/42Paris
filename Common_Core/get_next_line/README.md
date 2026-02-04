@@ -1,25 +1,25 @@
 # get_next_line
 
-Fonction permettant de lire un fichier **ligne par ligne** depuis un descripteur de fichier. Projet du tronc commun 42.
+Function to read a file **line by line** from a file descriptor. 42 Common Core project.
 
 ## Description
 
-`get_next_line` lit une ligne à la fois depuis un fd (fichier, stdin, socket, etc.), sans connaître la taille à l’avance. Elle gère :
+`get_next_line` reads one line at a time from an fd (file, stdin, socket, etc.) without knowing the size in advance. It handles:
 
-- Des buffers de taille configurable (`BUFFER_SIZE`)
-- Plusieurs descripteurs simultanés (version bonus)
-- Les fichiers vides et les lignes vides
+- Configurable buffer size (`BUFFER_SIZE`)
+- Multiple simultaneous descriptors (bonus version)
+- Empty files and empty lines
 
-## Compilation
+## Build
 
 ```bash
-make        # Compile get_next_line.a (version bonus avec multi-fd)
+make        # Build get_next_line.a (bonus version with multi-fd)
 make clean
 make fclean
 make re
 ```
 
-## Utilisation
+## Usage
 
 ```c
 #include "get_next_line.h"
@@ -46,15 +46,15 @@ int main(void)
 char *get_next_line(int fd);
 ```
 
-- **Retour** : La ligne lue (avec `\n`), ou `NULL` en fin de fichier / erreur
-- **fd** : Descripteur de fichier ouvert en lecture
+- **Returns**: The read line (including `\n`), or `NULL` on EOF/error
+- **fd**: File descriptor opened for reading
 
-## Version bonus
+## Bonus Version
 
-La version bonus gère plusieurs fichiers en parallèle en stockant un buffer par fd dans une liste chaînée.
+The bonus version handles multiple files in parallel by storing a buffer per fd in a linked list.
 
-## Fichiers
+## Files
 
-- `get_next_line.c` / `get_next_line_bonus.c` — Logique principale
-- `get_next_line_utils.c` — Fonctions utilitaires (strjoin, strlen, etc.)
-- `get_next_line.h` — Définition de `BUFFER_SIZE` et prototype
+- `get_next_line.c` / `get_next_line_bonus.c` — Main logic
+- `get_next_line_utils.c` — Utility functions (strjoin, strlen, etc.)
+- `get_next_line.h` — `BUFFER_SIZE` definition and prototype

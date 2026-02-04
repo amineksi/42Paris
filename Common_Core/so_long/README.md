@@ -1,52 +1,52 @@
 # so_long
 
-Jeu 2D type labyrinthe développé avec **MiniLibX**. Le joueur doit collecter tous les objets avant d’atteindre la sortie. Projet du tronc commun 42.
+2D maze-style game built with **MiniLibX**. Collect all items before reaching the exit. 42 Common Core project.
 
 ## Description
 
-`so_long` est un jeu graphique en C qui met en œuvre :
+`so_long` is a graphical C game that implements:
 
-- **Rendu graphique** via MiniLibX (fenêtre, sprites, événements)
-- **Parsing de cartes** au format `.ber` (texte)
-- **Pathfinding** — vérification qu’un chemin valide existe (collectibles + sortie accessibles)
-- **Gestion des touches** (WASD ou flèches) et fermeture propre
+- **Graphics rendering** via MiniLibX (window, sprites, events)
+- **Map parsing** in `.ber` format (text)
+- **Pathfinding** — verifies a valid path exists (collectibles + exit reachable)
+- **Key handling** (WASD or arrows) and clean shutdown
 
-### Éléments de la carte
+### Map Elements
 
-| Caractère | Rôle |
+| Character | Role |
 |-----------|------|
-| `1` | Mur |
-| `0` | Sol |
-| `P` | Joueur (position de départ) |
+| `1` | Wall |
+| `0` | Floor |
+| `P` | Player (starting position) |
 | `C` | Collectible |
-| `E` | Sortie |
+| `E` | Exit |
 
-## Prérequis
+## Prerequisites
 
-- **MiniLibX** (Linux) : `libmlx_linux.a` et headers dans `include/`
-- **X11** : `libXext`, `libX11`
-- **libft** : incluse dans le projet
+- **MiniLibX** (Linux): `libmlx_linux.a` and headers in `include/`
+- **X11**: `libXext`, `libX11`
+- **libft**: included in the project
 
-## Compilation
+## Build
 
 ```bash
-make        # Compile l'exécutable so_long
+make        # Build so_long executable
 make clean
 make fclean
 make re
 ```
 
-## Utilisation
+## Usage
 
 ```bash
 ./so_long maps/valid.ber
 ```
 
-### Format des cartes (.ber)
+### Map Format (.ber)
 
-- Rectangulaires, entourées de murs
-- Un seul `P`, un seul `E`, au moins un `C`
-- Exemple minimal :
+- Rectangular, surrounded by walls
+- One `P`, one `E`, at least one `C`
+- Minimal example:
 
 ```
 111111
@@ -55,26 +55,26 @@ make re
 111111
 ```
 
-## Structure du projet
+## Project Structure
 
 ```
 so_long/
-├── src/           # Code source
+├── src/           # Source code
 │   ├── main.c
-│   ├── creating_map.c   # Lecture et parsing
-│   ├── drawing_map.c    # Rendu graphique
-│   ├── handle_keys.c    # Gestion des entrées
-│   ├── algo_path.c      # Vérification du chemin
+│   ├── creating_map.c   # Reading and parsing
+│   ├── drawing_map.c    # Graphics rendering
+│   ├── handle_keys.c    # Input handling
+│   ├── algo_path.c      # Path verification
 │   └── ...
-├── maps/          # Cartes de test
-├── assets/        # Sprites XPM
-├── libft/         # Bibliothèque personnalisée
+├── maps/          # Test maps
+├── assets/        # XPM sprites
+├── libft/         # Custom library
 └── include/       # Headers (mlx, libft)
 ```
 
-## Compétences
+## Skills
 
-- Programmation graphique (MiniLibX)
-- Algorithmes de parcours (BFS/DFS pour le pathfinding)
-- Gestion mémoire et libération propre
-- Parsing et validation de données
+- Graphics programming (MiniLibX)
+- Pathfinding algorithms (BFS/DFS)
+- Memory management and clean deallocation
+- Parsing and data validation

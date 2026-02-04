@@ -1,28 +1,28 @@
 # libft
 
-Bibliothèque C personnalisée recréant les fonctions standards de la libc ainsi que des structures de données (listes chaînées). Projet fondateur du tronc commun 42.
+Custom C library recreating standard libc functions and linked lists. Foundational project of the 42 Common Core.
 
 ## Description
 
-`libft` est une bibliothèque réutilisable qui sert de base à de nombreux autres projets 42 (ft_printf, get_next_line, etc.). Elle implémente :
+`libft` is a reusable library that serves as the base for many other 42 projects (ft_printf, get_next_line, etc.). It implements:
 
-- **Fonctions sur les caractères** : `isalpha`, `isdigit`, `isalnum`, `isascii`, `isprint`, `toupper`, `tolower`
-- **Fonctions sur les chaînes** : `strlen`, `strlcpy`, `strlcat`, `strchr`, `strrchr`, `strncmp`, `strnstr`, `strdup`, `substr`, `strjoin`, `strtrim`, `split`, `strmapi`, `striteri`
-- **Fonctions mémoire** : `memset`, `bzero`, `memcpy`, `memmove`, `memchr`, `memcmp`, `calloc`
-- **Fonctions de conversion** : `atoi`, `itoa`
-- **Fonctions d’écriture** : `putchar_fd`, `putstr_fd`, `putendl_fd`, `putnbr_fd`
-- **Listes chaînées** : `lstnew`, `lstadd_front`, `lstadd_back`, `lstsize`, `lstlast`, `lstdelone`, `lstclear`, `lstiter`, `lstmap`
+- **Character functions**: `isalpha`, `isdigit`, `isalnum`, `isascii`, `isprint`, `toupper`, `tolower`
+- **String functions**: `strlen`, `strlcpy`, `strlcat`, `strchr`, `strrchr`, `strncmp`, `strnstr`, `strdup`, `substr`, `strjoin`, `strtrim`, `split`, `strmapi`, `striteri`
+- **Memory functions**: `memset`, `bzero`, `memcpy`, `memmove`, `memchr`, `memcmp`, `calloc`
+- **Conversion functions**: `atoi`, `itoa`
+- **Output functions**: `putchar_fd`, `putstr_fd`, `putendl_fd`, `putnbr_fd`
+- **Linked lists**: `lstnew`, `lstadd_front`, `lstadd_back`, `lstsize`, `lstlast`, `lstdelone`, `lstclear`, `lstiter`, `lstmap`
 
-## Compilation
+## Build
 
 ```bash
-make        # Compile libft.a
-make clean  # Supprime les .o
-make fclean # Supprime .o et libft.a
-make re     # Recompile depuis zéro
+make        # Build libft.a
+make clean  # Remove .o files
+make fclean # Remove .o and libft.a
+make re     # Full rebuild
 ```
 
-## Utilisation
+## Usage
 
 ```c
 #include "libft.h"
@@ -38,10 +38,10 @@ int main(void)
 }
 ```
 
-Lier avec `-lft -L.` lors de la compilation de votre projet.
+Link with `-lft -L.` when compiling your project.
 
-## Structure des fichiers
+## File Structure
 
-- `libft.h` — En-tête avec les prototypes
-- `*.c` — Implémentations des fonctions (une fonction par fichier)
-- `Makefile` — Règles de compilation
+- `libft.h` — Header with prototypes
+- `*.c` — Function implementations (one function per file)
+- `Makefile` — Build rules

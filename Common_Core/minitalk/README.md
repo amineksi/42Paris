@@ -1,45 +1,45 @@
 # minitalk
 
-Programme **client/serveur** de communication utilisant les **signaux Unix** (`SIGUSR1`, `SIGUSR2`). Projet du tronc commun 42.
+**Client/server** communication program using **Unix signals** (`SIGUSR1`, `SIGUSR2`). 42 Common Core project.
 
 ## Description
 
-`minitalk` permet d’envoyer des messages entre deux processus sans utiliser de pipes, sockets ou fichiers. La communication repose uniquement sur :
+`minitalk` sends messages between two processes without using pipes, sockets, or files. Communication relies solely on:
 
-- **SIGUSR1** et **SIGUSR2** pour encoder les bits (0 et 1)
-- Encodage des caractères en binaire (8 bits par caractère)
-- Échange du PID pour établir la connexion
+- **SIGUSR1** and **SIGUSR2** to encode bits (0 and 1)
+- Character encoding in binary (8 bits per character)
+- PID exchange to establish the connection
 
-## Compilation
+## Build
 
 ```bash
-make        # Compile client et server (version bonus)
+make        # Build client and server (bonus version)
 make clean
 make fclean
 make re
 ```
 
-## Utilisation
+## Usage
 
-**Terminal 1 — Serveur :**
+**Terminal 1 — Server:**
 ```bash
 ./server
-# Affiche son PID, par exemple : 12345
+# Displays its PID, e.g.: 12345
 ```
 
-**Terminal 2 — Client :**
+**Terminal 2 — Client:**
 ```bash
-./client 12345 "Votre message ici"
+./client 12345 "Your message here"
 ```
 
-Le serveur affiche le message reçu.
+The server displays the received message.
 
 ## Prototypes
 
 ```c
 // Server
 ./server
-// Affiche son PID et attend des messages
+// Displays its PID and waits for messages
 
 // Client
 ./client <PID> <message>
@@ -47,13 +47,13 @@ Le serveur affiche le message reçu.
 
 ## Architecture
 
-- `server.c` — Écoute les signaux, décode les bits, reconstruit les caractères
-- `client.c` — Envoie le message bit par bit via SIGUSR1/SIGUSR2
-- Version bonus : gestion de l’Unicode (caractères étendus)
+- `server.c` — Listens for signals, decodes bits, reconstructs characters
+- `client.c` — Sends the message bit by bit via SIGUSR1/SIGUSR2
+- Bonus version: Unicode support (extended characters)
 
-## Compétences
+## Skills
 
-- Signaux Unix (`signal`, `kill`)
-- Communication inter-processus
-- Encodage/décodage binaire
-- Gestion des processus (PID)
+- Unix signals (`signal`, `kill`)
+- Inter-process communication
+- Binary encoding/decoding
+- Process management (PID)

@@ -1,17 +1,17 @@
 # BSQ — Biggest Square
 
-Algorithme trouvant le **plus grand carré vide** dans une carte contenant des obstacles. Projet d’algorithme de la Piscine 42.
+Algorithm finding the **largest empty square** in a map containing obstacles. 42 Piscine algorithm project.
 
 ## Description
 
-BSQ analyse une carte (grille de caractères) et détermine le plus grand carré de cases vides, en évitant les obstacles. La solution utilise la **programmation dynamique** pour une complexité optimale.
+BSQ analyzes a map (character grid) and determines the largest square of empty cells while avoiding obstacles. The solution uses **dynamic programming** for optimal complexity.
 
-### Format de la carte
+### Map Format
 
-- Première ligne : nombre de lignes, caractères représentant vide/obstacle/plein
-- Lignes suivantes : la grille
+- First line: number of rows, characters for empty/obstacle/filled
+- Following lines: the grid
 
-Exemple :
+Example:
 ```
 9.ox
 ............................
@@ -25,32 +25,32 @@ Exemple :
 ..o.......o................
 ```
 
-## Compilation
+## Build
 
-> **Note** : Si le fichier s'appelle `Makefile.txt`, renommez-le en `Makefile` pour utiliser `make`.
+> **Note**: If the file is named `Makefile.txt`, rename it to `Makefile` to use `make`.
 
 ```bash
-make        # Crée l'exécutable bsq
+make        # Build bsq executable
 make clean
 make fclean
 make re
 ```
 
-## Utilisation
+## Usage
 
-### Avec un fichier
+### With a file
 
 ```bash
 ./bsq map.txt
 ```
 
-### Avec plusieurs fichiers
+### With multiple files
 
 ```bash
 ./bsq map1.txt map2.txt map3.txt
 ```
 
-### Entrée standard
+### Standard input
 
 ```bash
 echo "4.ox
@@ -60,28 +60,28 @@ echo "4.ox
 ...." | ./bsq
 ```
 
-### Générateur de cartes (Perl)
+### Map generator (Perl)
 
 ```bash
-perl gen.sh <largeur> <hauteur> <densité> > map.txt
+perl gen.sh <width> <height> <density> > map.txt
 ./bsq map.txt
 ```
 
-**Exemple :** `perl gen.sh 20 20 5 > test.ber` génère une carte 20×20 avec ~5 % d’obstacles.
+**Example:** `perl gen.sh 20 20 5 > test.ber` generates a 20×20 map with ~5% obstacles.
 
-## Contraintes
+## Constraints
 
-- Taille maximale de la carte : **1023 × 1023**
+- Maximum map size: **1023 × 1023**
 
 ## Architecture
 
-- `bsq.c` — Point d’entrée
-- `map.c` / `map_utils.c` — Lecture et parsing de la carte
-- `read.c` — Gestion de l’entrée
-- `solve.c` / `solve_utils.c` — Algorithme du plus grand carré
+- `bsq.c` — Entry point
+- `map.c` / `map_utils.c` — Map reading and parsing
+- `read.c` — Input handling
+- `solve.c` / `solve_utils.c` — Biggest square algorithm
 
-## Compétences
+## Skills
 
-- Programmation dynamique
-- Parsing de fichiers
-- Algorithmes sur grilles
+- Dynamic programming
+- File parsing
+- Grid algorithms

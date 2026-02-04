@@ -1,32 +1,32 @@
 # ft_printf
 
-Réimplémentation de la fonction `printf` de la libc. Projet du tronc commun 42.
+Reimplementation of the libc `printf` function. 42 Common Core project.
 
 ## Description
 
-`ft_printf` reproduit le comportement de `printf` pour les conversions suivantes :
+`ft_printf` reproduces `printf` behavior for the following conversions:
 
-| Spécificateur | Type | Description |
-|---------------|------|-------------|
-| `%c` | int | Caractère |
-| `%s` | char * | Chaîne de caractères |
-| `%p` | void * | Adresse mémoire (hexadécimale) |
-| `%d` / `%i` | int | Entier signé |
-| `%u` | unsigned int | Entier non signé |
-| `%x` | unsigned int | Hexadécimal minuscules |
-| `%X` | unsigned int | Hexadécimal majuscules |
-| `%%` | — | Caractère `%` |
+| Specifier | Type | Description |
+|-----------|------|-------------|
+| `%c` | int | Character |
+| `%s` | char * | String |
+| `%p` | void * | Memory address (hexadecimal) |
+| `%d` / `%i` | int | Signed integer |
+| `%u` | unsigned int | Unsigned integer |
+| `%x` | unsigned int | Hexadecimal lowercase |
+| `%X` | unsigned int | Hexadecimal uppercase |
+| `%%` | — | Literal `%` |
 
-## Compilation
+## Build
 
 ```bash
-make        # Compile libftprintf.a
-make clean  # Supprime les objets
-make fclean # Nettoyage complet
-make re     # Recompilation complète
+make        # Build libftprintf.a
+make clean  # Remove object files
+make fclean # Full clean
+make re     # Full rebuild
 ```
 
-## Utilisation
+## Usage
 
 ```c
 #include "ft_printf.h"
@@ -39,12 +39,12 @@ int main(void)
 }
 ```
 
-## Dépendances
+## Dependencies
 
-- **libft** — Bibliothèque incluse dans le projet (sous-dossier `libft/`)
+- **libft** — Library included in the project (subfolder `libft/`)
 
 ## Architecture
 
-- `ft_printf.c` — Fonction principale et parsing du format
-- `ft_print_*.c` — Handlers pour chaque type de conversion
-- `ft_printf_utils.c` — Fonctions utilitaires
+- `ft_printf.c` — Main function and format parsing
+- `ft_print_*.c` — Handlers for each conversion type
+- `ft_printf_utils.c` — Utility functions

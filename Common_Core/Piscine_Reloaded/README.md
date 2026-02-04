@@ -1,20 +1,20 @@
 # Piscine Reloaded
 
-Exercices de révision C post-Piscine. Renforcement des bases : pointeurs, chaînes de caractères, tableaux.
+C revision exercises post-Piscine. Reinforcing basics: pointers, strings, arrays.
 
 ## Description
 
-Ce projet regroupe des exercices courts pour consolider les fondamentaux du C après la Piscine 42. Chaque exercice est une fonction ou un petit programme autonome.
+This project groups short exercises to consolidate C fundamentals after the 42 Piscine. Each exercise is a function or small standalone program.
 
 ## Structure
 
 ```
 Piscine_Reloaded/
 └── ex18/
-    └── ft_print_params.c   # Affichage des arguments en ligne de commande
+    └── ft_print_params.c   # Display command-line arguments
 ```
 
-## Compilation et exécution
+## Build and Run
 
 ```bash
 cd ex18
@@ -22,6 +22,6 @@ cc -Wall -Wextra -Werror ft_print_params.c -o ft_print_params
 ./ft_print_params arg1 arg2 arg3
 ```
 
-## Objectif
+## Purpose
 
-Réviser et renforcer la maîtrise du C avant d’attaquer les projets plus lourds du tronc commun.
+Review and strengthen C skills before tackling heavier Common Core projects.
