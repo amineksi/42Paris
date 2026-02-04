@@ -9,7 +9,7 @@ This repository contains all projects completed as part of the **42 Paris** curr
 
 ---
 
-## 📋 Table of Contents
+## Table of Contents
 
 - [Project Structure](#-project-structure)
 - [Common Core Projects](#-common-core-projects)
@@ -20,37 +20,7 @@ This repository contains all projects completed as part of the **42 Paris** curr
 
 ---
 
-## 📁 Project Structure
-
-```
-42Paris/
-├── Common_Core/          # 42 Common Core projects
-│   ├── libft/             # Custom C library
-│   ├── ft_printf/         # printf implementation
-│   ├── get_next_line/     # Line-by-line reading (files/descriptors)
-│   ├── minitalk/          # Client/Server (Unix signals)
-│   ├── so_long/           # 2D game with MiniLibX
-│   ├── push_swap/         # Stack sorting with constraints
-│   ├── cub3d/             # 3D raycasting game (Wolfenstein-style)
-│   ├── minishell/         # Command interpreter (bash-like)
-│   ├── ft_irc/            # IRC server in C++
-│   ├── inception/        # Docker stack (WordPress, MariaDB, Nginx)
-│   ├── netpractice/       # Network configuration exercises
-│   ├── born2beroot/       # Debian VM setup (SSH, sudo, firewall)
-│   ├── cpp00 → cpp09/     # C++ modules (OOP, templates, STL...)
-│   └── Piscine_Reloaded/  # C revision exercises
-├── 42Piscine/             # Projects from the Piscine
-│   ├── BSQ/               # Biggest square algorithm
-│   ├── Days/              # C exercises (c00 to c10)
-│   ├── Rush/              # Group projects (rush00, rush01)
-│   └── Shell/             # Shell scripts (shell01)
-├── LICENSE
-└── README.md
-```
-
----
-
-## 🎯 Common Core Projects
+## Common Core Projects
 
 ### [libft](Common_Core/libft/)
 Custom C library recreating standard libc functions and linked lists.
@@ -132,7 +102,7 @@ C revision exercises post-Piscine (strings, pointers, etc.).
 
 ---
 
-## 🏊 Piscine Projects
+## Piscine Projects
 
 ### [BSQ](42Piscine/BSQ/)
 **Biggest Square** — Algorithm finding the largest empty square in a map with obstacles.
@@ -156,7 +126,7 @@ Shell scripts (bash): file manipulation, variables, loops.
 
 ---
 
-## 🚀 Installation & Usage
+## Installation & Usage
 
 Each project is standalone with its own `Makefile`. Example:
 
@@ -175,7 +145,7 @@ See each subproject's `README.md` for detailed instructions.
 
 ---
 
-## 💡 Skills Demonstrated
+## Skills Demonstrated
 
 | Domain | Projects |
 |--------|----------|
@@ -193,7 +163,7 @@ See each subproject's `README.md` for detailed instructions.
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the [MIT License](LICENSE). See the LICENSE file for details.
 
