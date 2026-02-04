@@ -9,11 +9,11 @@ Welcome to the 42Piscine repository ! It contains each project I've completed du
 3. **Rush (66%)**
 4. **Shell (100%)**
 
-Here's an overview of each folder and it's contents.
+Here's an overview of each folder and its contents.
 
-### BSQ (Algorithm functioning)
+### BSQ (Algorithm)
 
-The [BSQ](./BSQ) folder contains the implementation of the "Biggest Square" algorithm, which in a map, creates the biggest square of empty spaces avoiding the obstacles.
+The [BSQ](./BSQ) folder contains the implementation of the "Biggest Square" algorithm, which finds the largest square of empty spaces in a map while avoiding obstacles. See [BSQ/README.md](./BSQ/README.md) for usage and compilation.
 
 ### C (95%)
 
